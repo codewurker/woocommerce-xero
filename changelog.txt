@@ -1,5 +1,10 @@
 *** Xero Integration ***
 
+2024-05-20 - version 1.8.6
+* Dev - Bump WooCommerce "tested up to" version 8.9.
+* Dev - Bump WooCommerce minimum supported version to 8.7.
+* Update - Link to the WooCommerce log section instead of to the local file path.
+
 2024-03-25 - version 1.8.5
 * Add - Filters to adjust supported countries for Report Tax Type.
 * Add - Support for US, South Africa, and Malta as Report Tax Type.

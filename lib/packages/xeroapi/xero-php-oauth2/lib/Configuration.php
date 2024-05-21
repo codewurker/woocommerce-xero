@@ -9,7 +9,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 25-March-2024 using Strauss.
+ * Modified by woocommerce on 20-May-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 

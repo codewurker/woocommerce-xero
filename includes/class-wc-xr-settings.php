@@ -253,7 +253,16 @@ class WC_XR_Settings {
 					'title'       => __( 'Debug', 'woocommerce-xero' ),
 					'default'     => 'off',
 					'type'        => 'checkbox',
-					'description' => __( 'Enable logging. Log file is located at: /wc-logs/. <br> <strong>Note: this may log personal information. We recommend using this for debugging purposes only and deleting the logs when finished.</strong>', 'woocommerce-xero' ),
+					'description' => sprintf(
+						// translators: %1$s - opening HTML <a> link tag, %2$s - closing HTML </a> link tag, line break and opening HTML <strong> tag %3$s - closing HTML </strong> tag.
+						__(
+							'Log debug messages to the %1$sWooCommerce status log%2$s Note: this may log personal information. We recommend using this for debugging purposes only and deleting the logs when finished.%3$s',
+							'woocommerce-xero'
+						),
+						'<a href="' . esc_url( admin_url( 'admin.php?page=wc-status&tab=logs' ) ) . '">',
+						'</a><br><strong>',
+						'</strong>'
+					),
 				),
 			)
 		);
