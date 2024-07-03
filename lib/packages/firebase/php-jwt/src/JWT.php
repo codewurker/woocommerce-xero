@@ -2,7 +2,7 @@
 /**
  * @license BSD-3-Clause
  *
- * Modified by woocommerce on 20-May-2024 using Strauss.
+ * Modified by woocommerce on 01-July-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -209,12 +209,13 @@ class JWT
         string $keyId = null,
         array $head = null
     ): string {
-        $header = ['typ' => 'JWT', 'alg' => $alg];
+        $header = ['typ' => 'JWT'];
+        if (isset($head) && \is_array($head)) {
+            $header = \array_merge($header, $head);
+        }
+        $header['alg'] = $alg;
         if ($keyId !== null) {
             $header['kid'] = $keyId;
-        }
-        if (isset($head) && \is_array($head)) {
-            $header = \array_merge($head, $header);
         }
         $segments = [];
         $segments[] = static::urlsafeB64Encode((string) static::jsonEncode($header));
