@@ -2,7 +2,7 @@
 /**
  * @license BSD-3-Clause
  *
- * Modified by woocommerce on 01-July-2024 using Strauss.
+ * Modified by woocommerce on 22-July-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 

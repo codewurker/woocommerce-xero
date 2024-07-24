@@ -1,5 +1,11 @@
 *** Xero Integration ***
 
+2024-07-22 - version 1.8.8
+* Dev - Bump WooCommerce "tested up to" version 9.1.
+* Dev - Bump WooCommerce minimum supported version to 8.9.
+* Dev - Bump WordPress "tested up to" version 6.6.
+* Dev - Exclude the Woo Comment Hook `@since` sniff.
+
 2024-07-01 - version 1.8.7
 * Dev - Bump WooCommerce "tested up to" version 9.0.
 * Dev - Bump WooCommerce minimum supported version to 8.8.
