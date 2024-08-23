@@ -11,7 +11,7 @@
  * @link https://packagist.org/packages/league/oauth2-client Packagist
  * @link https://github.com/thephpleague/oauth2-client GitHub
  *
- * Modified by woocommerce on 22-July-2024 using Strauss.
+ * Modified by woocommerce on 19-August-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 

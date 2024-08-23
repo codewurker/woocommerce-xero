@@ -40,7 +40,7 @@ class WC_XR_Contact {
 	 * @param string $name
 	 */
 	public function set_name( $name ) {
-		$this->name = htmlspecialchars( $name );
+		$this->name = htmlspecialchars( $name, ENT_COMPAT );
 	}
 
 	/**
@@ -54,7 +54,7 @@ class WC_XR_Contact {
 	 * @param string $first_name
 	 */
 	public function set_first_name( $first_name ) {
-		$this->first_name = htmlspecialchars( $first_name );
+		$this->first_name = htmlspecialchars( $first_name, ENT_COMPAT );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class WC_XR_Contact {
 	 * @param string $last_name
 	 */
 	public function set_last_name( $last_name ) {
-		$this->last_name = htmlspecialchars( $last_name );
+		$this->last_name = htmlspecialchars( $last_name, ENT_COMPAT );
 	}
 
 	/**
@@ -82,7 +82,7 @@ class WC_XR_Contact {
 	 * @param string $email_address
 	 */
 	public function set_email_address( $email_address ) {
-		$this->email_address = htmlspecialchars( $email_address );
+		$this->email_address = htmlspecialchars( $email_address, ENT_COMPAT );
 	}
 
 	/**

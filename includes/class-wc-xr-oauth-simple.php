@@ -407,57 +407,65 @@ class WC_XR_OAuth_Simple {
         return join('&',$elements);
     }
 
-    function _generateSignature () {
-        $secretKey = '';
-	if(isset($this->_secrets['shared_secret']))
-	    $secretKey = $this->_oauthEscape($this->_secrets['shared_secret']);
-	$secretKey .= '&';
-	if(isset($this->_secrets['oauth_secret']))
-            $secretKey .= $this->_oauthEscape($this->_secrets['oauth_secret']);
-        switch($this->_parameters['oauth_signature_method'])
-        {
-        	case 'RSA-SHA1':
-        	
-        		// Fetch the public key  
-                $publickey = openssl_get_publickey($this->_secrets['public_key']);
-                if ( $publickey == false ) {
-				    throw new WC_XR_OAuthSimpleException('Unable to retrieve public key.');
-	                return;
-                }  
-                
-                // Fetch the private key 
-                $privatekeyid = openssl_get_privatekey($this->_secrets['private_key']);
-                if ( $privatekeyid == false ) {
-				    throw new WC_XR_OAuthSimpleException('Unable to retrieve private key.');
-	                return;
-                }  
+	/**
+	 * Generate the signature.
+	 *
+	 * @throws WC_XR_OAuthSimpleException If the signature method is unknown.
+	 *
+	 * @return string The signature.
+	 */
+	public function generate_signature() {
+		$secret_key = '';
 
-                // Sign using the key
-                
-                $this->sbs = $this->_oauthEscape($this->_action).'&'.$this->_oauthEscape($this->_path).'&'.$this->_oauthEscape($this->_normalizedParameters());
-                
-               $ok = openssl_sign($this->sbs, $signature, $privatekeyid);
-                if ( $ok == false ) {
-				    throw new WC_XR_OAuthSimpleException('Error generating signature.');
-	                return;
-                }  
-               
-                  // Release the key resource
-				openssl_free_key($privatekeyid);
-           
-               return base64_encode($signature);
-               //return base64_encode(hash_hmac('sha1',$this->sbs,$secretKey,true));
-                
-            case 'PLAINTEXT':
-                return urlencode($secretKey);
+		if ( isset( $this->_secrets['shared_secret'] ) ) {
+			$secret_key .= $this->_oauth_escape( $this->_secrets['shared_secret'] );
+		}
 
-            case 'HMAC-SHA1':
-                $this->sbs = $this->_oauthEscape($this->_action).'&'.$this->_oauthEscape($this->_path).'&'.$this->_oauthEscape($this->_normalizedParameters());
-                //error_log('SBS: '.$sigString);
-                return base64_encode(hash_hmac('sha1',$this->sbs,$secretKey,true));
+		$secret_key .= '&';
 
-            default:
-                throw new WC_XR_OAuthSimpleException('Unknown signature method for OAuthSimple');
-        }
-    }
+		if ( isset( $this->_secrets['oauth_secret'] ) ) {
+			$secret_key .= $this->_oauth_escape( $this->_secrets['oauth_secret'] );
+		}
+
+		switch ( $this->_parameters['oauth_signature_method'] ) {
+			case 'RSA-SHA1':
+				// Fetch the public key.
+				$public_key = openssl_get_publickey( $this->_secrets['public_key'] );
+
+				if ( false === $public_key ) {
+					throw new WC_XR_OAuthSimpleException( 'Unable to retrieve public key.' );
+				}
+
+				// Fetch the private key.
+				$private_key_id = openssl_get_privatekey( $this->_secrets['private_key'] );
+
+				if ( false === $private_key_id ) {
+					throw new WC_XR_OAuthSimpleException( 'Unable to retrieve private key.' );
+				}
+
+				// Sign using the key.
+				$this->sbs = $this->_oauth_escape( $this->_action ) . '&' . $this->_oauth_escape( $this->_path ) . '&' . $this->_oauth_escape( $this->_normalized_parameters() );
+
+				$ok = openssl_sign( $this->sbs, $signature, $private_key_id );
+
+				if ( false === $ok ) {
+					throw new WC_XR_OAuthSimpleException( 'Error generating signature.' );
+				}
+
+				// Release the key resource.
+				unset( $private_key_id );
+
+				return base64_encode( $signature ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+
+			case 'PLAINTEXT':
+				return urlencode( $secret_key ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.urlencode_urlencode
+
+			case 'HMAC-SHA1':
+				$this->sbs = $this->_oauth_escape( $this->_action ) . '&' . $this->_oauth_escape( $this->_path ) . '&' . $this->_oauth_escape( $this->_normalized_parameters() );
+				return base64_encode( hash_hmac( 'sha1', $this->sbs, $secret_key, true ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+
+			default:
+				throw new WC_XR_OAuthSimpleException( 'Unknown signature method for OAuthSimple' );
+		}
+	}
 }

@@ -86,7 +86,7 @@ class WC_XR_Line_Item {
 	 * @param string $description
 	 */
 	public function set_description( $description ) {
-		$this->description = htmlspecialchars( $description );
+		$this->description = htmlspecialchars( $description, ENT_COMPAT );
 	}
 
 	/**

@@ -1,5 +1,11 @@
 *** Xero Integration ***
 
+2024-08-19 - version 1.8.9
+* Fix - PHPCompatibility errors reported by the QIT test.
+* Dev - Bump WooCommerce "tested up to" version 9.2.
+* Dev - Bump WooCommerce minimum supported version to 9.0.
+* Dev - Fix QIT E2E tests and add support for a few new test types.
+
 2024-07-22 - version 1.8.8
 * Dev - Bump WooCommerce "tested up to" version 9.1.
 * Dev - Bump WooCommerce minimum supported version to 8.9.

@@ -29,7 +29,7 @@ class WC_XR_Phone {
 	 * @param string $type
 	 */
 	public function set_type( $type ) {
-		$this->type = htmlspecialchars( $type );
+		$this->type = htmlspecialchars( $type, ENT_COMPAT );
 	}
 
 	/**
@@ -43,7 +43,7 @@ class WC_XR_Phone {
 	 * @param string $number
 	 */
 	public function set_number( $number ) {
-		$this->number = htmlspecialchars( $number );
+		$this->number = htmlspecialchars( $number, ENT_COMPAT );
 	}
 
 	/**

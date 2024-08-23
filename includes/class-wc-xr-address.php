@@ -25,7 +25,7 @@ class WC_XR_Address {
 	 * @param string $type
 	 */
 	public function set_type( $type ) {
-		$this->type = htmlspecialchars( $type );
+		$this->type = htmlspecialchars( $type, ENT_COMPAT );
 	}
 
 	/**
@@ -39,7 +39,7 @@ class WC_XR_Address {
 	 * @param string $line_1
 	 */
 	public function set_line_1( $line_1 ) {
-		$this->line_1 = htmlspecialchars( $line_1 );
+		$this->line_1 = htmlspecialchars( $line_1, ENT_COMPAT );
 	}
 
 	/**
@@ -53,7 +53,7 @@ class WC_XR_Address {
 	 * @param string $line_2
 	 */
 	public function set_line_2( $line_2 ) {
-		$this->line_2 = htmlspecialchars( $line_2 );
+		$this->line_2 = htmlspecialchars( $line_2, ENT_COMPAT );
 	}
 
 	/**
@@ -67,7 +67,7 @@ class WC_XR_Address {
 	 * @param string $city
 	 */
 	public function set_city( $city ) {
-		$this->city = htmlspecialchars( $city );
+		$this->city = htmlspecialchars( $city, ENT_COMPAT );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class WC_XR_Address {
 	 * @param string $region
 	 */
 	public function set_region( $region ) {
-		$this->region = htmlspecialchars( $region );
+		$this->region = htmlspecialchars( $region, ENT_COMPAT );
 	}
 
 	/**
@@ -95,7 +95,7 @@ class WC_XR_Address {
 	 * @param string $postal_code
 	 */
 	public function set_postal_code( $postal_code ) {
-		$this->postal_code = htmlspecialchars( $postal_code );
+		$this->postal_code = htmlspecialchars( $postal_code, ENT_COMPAT );
 	}
 
 	/**
@@ -109,7 +109,7 @@ class WC_XR_Address {
 	 * @param string $country
 	 */
 	public function set_country( $country ) {
-		$this->country = htmlspecialchars( $country );
+		$this->country = htmlspecialchars( $country, ENT_COMPAT );
 	}
 
 	/**
