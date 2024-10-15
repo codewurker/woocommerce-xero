@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -58,6 +58,7 @@ class ProblemType
     const REQUEST_TIMEOUT = 'request-timeout';
     const SERVICE_UNAVAILABLE = 'service-unavailable';
     const UNAUTHORIZED = 'unauthorized';
+    const RATE_LIMIT_ERROR = 'rate-limit-error';
     
     /**
      * Gets allowable values of the enum
@@ -76,6 +77,7 @@ class ProblemType
             self::REQUEST_TIMEOUT,
             self::SERVICE_UNAVAILABLE,
             self::UNAUTHORIZED,
+            self::RATE_LIMIT_ERROR,
         ];
     }
 }

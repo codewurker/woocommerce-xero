@@ -196,7 +196,7 @@ class WC_XR_Line_Item {
 
 	/**
 	 * @version 1.7.38
-	 * 
+	 *
 	 * @return float
 	 */
 	public function get_discount_rate() {
@@ -209,7 +209,7 @@ class WC_XR_Line_Item {
 	/**
 	 * Get the discount amount of current line item.
 	 * @since 1.7.38
-	 * 
+	 *
 	 * @return float
 	 */
 	public function get_discount_amount() {
@@ -218,7 +218,7 @@ class WC_XR_Line_Item {
 
 	/**
 	 * @version 1.7.38
-	 * 
+	 *
 	 * @param float $discount_rate
 	 */
 	public function set_discount_rate( $discount_rate ) {
@@ -227,7 +227,7 @@ class WC_XR_Line_Item {
 
 	/**
 	 * Set the discount amount of current line item.
-	 * 
+	 *
 	 * @since 1.7.38
 	 *
 	 * @param float $discount_amount Discount ammount.
@@ -375,9 +375,10 @@ class WC_XR_Line_Item {
 		// If no tax rate was found, ask Xero to add one for us
 
 		// First, see if we need a ReportTaxType
-		if ( ! empty( $report_tax_type ) ) {
-			$tax_rate['report_tax_type'] = $report_tax_type;
-			$logger->write( " - Setting ReportTaxType to ($report_tax_type)" );
+		$report_tax_type_for_create = $this->get_report_tax_type_for_base_country( true );
+		if ( ! empty( $report_tax_type_for_create ) ) {
+			$tax_rate['report_tax_type'] = $report_tax_type_for_create;
+			$logger->write( " - Setting ReportTaxType to ($report_tax_type_for_create)" );
 		}
 
 		$tax_type_create_request = new WC_XR_Request_Create_Tax_Rate( $this->settings, $tax_rate );
@@ -475,9 +476,11 @@ class WC_XR_Line_Item {
 	 * @since 1.7.7
 	 * @version 1.7.39
 	 *
+	 * @param bool $create_tax_rate Whether to return the report tax type for creating a tax rate in Xero.
+	 *
 	 * @return string (empty) | OUTPUT | INPUT | MOSSSALES | (filtered report tax type)
 	 */
-	protected function get_report_tax_type_for_base_country() {
+	protected function get_report_tax_type_for_base_country( $create_tax_rate = false ) {
 		$tax_rate = $this->get_tax_rate();
 
 		$is_shipping_line_item = array_key_exists( 'is_shipping_line_item', $tax_rate ) && $tax_rate['is_shipping_line_item'];
@@ -485,16 +488,29 @@ class WC_XR_Line_Item {
 
 		$base_country = WC()->countries->get_base_country();
 
-		/**
-		 * Filter the countries list for the report tax type.
-		 *
-		 * @since 1.8.5
-		 *
-		 * @param array $countries_list The countries list.
-		 *
-		 * @return array The countries list for the report tax type.
-		 */
-		$countries_list = apply_filters( 'woocommerce_xero_report_tax_type_countries', array( 'AU', 'NZ', 'GB', 'US', 'ZA', 'MT' ) );
+		if ( $create_tax_rate ) {
+			/**
+			 * Filter the countries list for the report tax type for creating tax rate in the Xero.
+			 *
+			 * @since 1.9.0
+			 *
+			 * @param array $countries_list The countries list.
+			 *
+			 * @return array The countries list for the report tax type for creating tax rate in the Xero.
+			 */
+			$countries_list = apply_filters( 'woocommerce_xero_report_tax_type_countries_for_create_tax_rate', array( 'AU', 'NZ', 'GB' ) );
+		} else {
+			/**
+			 * Filter the countries list for the report tax type.
+			 *
+			 * @since 1.8.5
+			 *
+			 * @param array $countries_list The countries list.
+			 *
+			 * @return array The countries list for the report tax type.
+			 */
+			$countries_list = apply_filters( 'woocommerce_xero_report_tax_type_countries', array( 'AU', 'NZ', 'GB', 'US', 'ZA', 'MT' ) );
+		}
 
 		$report_tax_type = '';
 		if ( in_array( $base_country, $countries_list, true ) ) {

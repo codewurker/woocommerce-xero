@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -54,7 +54,6 @@ class AllowanceType
     const MEALS = 'MEALS';
     const TRAVEL = 'TRAVEL';
     const OTHER = 'OTHER';
-    const JOBKEEPER = 'JOBKEEPER';
     const TOOLS = 'TOOLS';
     const TASKS = 'TASKS';
     const QUALIFICATIONS = 'QUALIFICATIONS';
@@ -72,7 +71,6 @@ class AllowanceType
             self::MEALS,
             self::TRAVEL,
             self::OTHER,
-            self::JOBKEEPER,
             self::TOOLS,
             self::TASKS,
             self::QUALIFICATIONS,

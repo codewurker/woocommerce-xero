@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -307,7 +307,16 @@ class PayRuns implements ModelInterface, ArrayAccess, \Countable, \IteratorAggre
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-        return PayrollAuObjectSerializer::sanitizeForSerialization($this)->PayRuns;
+       $sanitizedObject = PayrollAuObjectSerializer::sanitizeForSerialization($this);
+        $json = [];
+        if(isset($sanitizedObject->pagination)){
+            $json['pagination'] = $sanitizedObject->pagination;
+        }
+        if(isset($sanitizedObject->warnings)){
+            $json['warnings'] = $sanitizedObject->warnings;
+        }
+        $json['PayRuns'] = $sanitizedObject->PayRuns;
+        return $json;
     }
 
     /**

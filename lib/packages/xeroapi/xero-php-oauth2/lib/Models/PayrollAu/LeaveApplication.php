@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -69,6 +69,7 @@ class LeaveApplication implements ModelInterface, ArrayAccess
         'start_date' => 'string',
         'end_date' => 'string',
         'description' => 'string',
+        'pay_out_type' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PayOutType',
         'leave_periods' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\LeavePeriod[]',
         'updated_date_utc' => 'string',
         'validation_errors' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\ValidationError[]'
@@ -87,6 +88,7 @@ class LeaveApplication implements ModelInterface, ArrayAccess
         'start_date' => null,
         'end_date' => null,
         'description' => null,
+        'pay_out_type' => null,
         'leave_periods' => null,
         'updated_date_utc' => null,
         'validation_errors' => null
@@ -126,6 +128,7 @@ class LeaveApplication implements ModelInterface, ArrayAccess
         'start_date' => 'StartDate',
         'end_date' => 'EndDate',
         'description' => 'Description',
+        'pay_out_type' => 'PayOutType',
         'leave_periods' => 'LeavePeriods',
         'updated_date_utc' => 'UpdatedDateUTC',
         'validation_errors' => 'ValidationErrors'
@@ -144,6 +147,7 @@ class LeaveApplication implements ModelInterface, ArrayAccess
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'description' => 'setDescription',
+        'pay_out_type' => 'setPayOutType',
         'leave_periods' => 'setLeavePeriods',
         'updated_date_utc' => 'setUpdatedDateUtc',
         'validation_errors' => 'setValidationErrors'
@@ -162,6 +166,7 @@ class LeaveApplication implements ModelInterface, ArrayAccess
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'description' => 'getDescription',
+        'pay_out_type' => 'getPayOutType',
         'leave_periods' => 'getLeavePeriods',
         'updated_date_utc' => 'getUpdatedDateUtc',
         'validation_errors' => 'getValidationErrors'
@@ -234,6 +239,7 @@ class LeaveApplication implements ModelInterface, ArrayAccess
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
         $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['pay_out_type'] = isset($data['pay_out_type']) ? $data['pay_out_type'] : null;
         $this->container['leave_periods'] = isset($data['leave_periods']) ? $data['leave_periods'] : null;
         $this->container['updated_date_utc'] = isset($data['updated_date_utc']) ? $data['updated_date_utc'] : null;
         $this->container['validation_errors'] = isset($data['validation_errors']) ? $data['validation_errors'] : null;
@@ -498,6 +504,33 @@ class LeaveApplication implements ModelInterface, ArrayAccess
     {
 
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets pay_out_type
+     *
+     * @return \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PayOutType|null
+     */
+    public function getPayOutType()
+    {
+        return $this->container['pay_out_type'];
+    }
+
+    /**
+     * Sets pay_out_type
+     *
+     * @param \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PayOutType|null $pay_out_type pay_out_type
+     *
+     * @return $this
+     */
+    public function setPayOutType($pay_out_type)
+    {
+
+        $this->container['pay_out_type'] = $pay_out_type;
 
         return $this;
     }

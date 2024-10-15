@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -88,7 +88,8 @@ class Payment implements ModelInterface, ArrayAccess
         'has_account' => 'bool',
         'has_validation_errors' => 'bool',
         'status_attribute_string' => 'string',
-        'validation_errors' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]'
+        'validation_errors' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]',
+        'warnings' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]'
     ];
 
     /**
@@ -123,7 +124,8 @@ class Payment implements ModelInterface, ArrayAccess
         'has_account' => null,
         'has_validation_errors' => null,
         'status_attribute_string' => null,
-        'validation_errors' => null
+        'validation_errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -179,7 +181,8 @@ class Payment implements ModelInterface, ArrayAccess
         'has_account' => 'HasAccount',
         'has_validation_errors' => 'HasValidationErrors',
         'status_attribute_string' => 'StatusAttributeString',
-        'validation_errors' => 'ValidationErrors'
+        'validation_errors' => 'ValidationErrors',
+        'warnings' => 'Warnings'
     ];
 
     /**
@@ -214,7 +217,8 @@ class Payment implements ModelInterface, ArrayAccess
         'has_account' => 'setHasAccount',
         'has_validation_errors' => 'setHasValidationErrors',
         'status_attribute_string' => 'setStatusAttributeString',
-        'validation_errors' => 'setValidationErrors'
+        'validation_errors' => 'setValidationErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -249,7 +253,8 @@ class Payment implements ModelInterface, ArrayAccess
         'has_account' => 'getHasAccount',
         'has_validation_errors' => 'getHasValidationErrors',
         'status_attribute_string' => 'getStatusAttributeString',
-        'validation_errors' => 'getValidationErrors'
+        'validation_errors' => 'getValidationErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -381,6 +386,7 @@ class Payment implements ModelInterface, ArrayAccess
         $this->container['has_validation_errors'] = isset($data['has_validation_errors']) ? $data['has_validation_errors'] : false;
         $this->container['status_attribute_string'] = isset($data['status_attribute_string']) ? $data['status_attribute_string'] : null;
         $this->container['validation_errors'] = isset($data['validation_errors']) ? $data['validation_errors'] : null;
+        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
     }
 
     /**
@@ -1196,6 +1202,33 @@ class Payment implements ModelInterface, ArrayAccess
     {
 
         $this->container['validation_errors'] = $validation_errors;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets warnings
+     *
+     * @return \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]|null $warnings Displays array of warning messages from the API
+     *
+     * @return $this
+     */
+    public function setWarnings($warnings)
+    {
+
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

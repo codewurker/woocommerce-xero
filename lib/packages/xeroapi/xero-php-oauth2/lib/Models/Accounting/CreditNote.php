@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -1037,7 +1037,7 @@ class CreditNote implements ModelInterface, ArrayAccess
     /**
      * Sets sent_to_contact
      *
-     * @param bool|null $sent_to_contact boolean to indicate if a credit note has been sent to a contact via  the Xero app (currently read only)
+     * @param bool|null $sent_to_contact Boolean to set whether the credit note in the Xero app should be marked as “sent”. This can be set only on credit notes that have been approved
      *
      * @return $this
      */

@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -395,6 +395,13 @@ class Organisation implements ModelInterface, ArrayAccess
     const MODEL_CLASS_NON_GST_CASHBOOK = 'NON_GST_CASHBOOK';
     const MODEL_CLASS_ULTIMATE = 'ULTIMATE';
     const MODEL_CLASS_LITE = 'LITE';
+    const MODEL_CLASS_ULTIMATE_10 = 'ULTIMATE_10';
+    const MODEL_CLASS_ULTIMATE_20 = 'ULTIMATE_20';
+    const MODEL_CLASS_ULTIMATE_50 = 'ULTIMATE_50';
+    const MODEL_CLASS_ULTIMATE_100 = 'ULTIMATE_100';
+    const MODEL_CLASS_IGNITE = 'IGNITE';
+    const MODEL_CLASS_GROW = 'GROW';
+    const MODEL_CLASS_COMPREHENSIVE = 'COMPREHENSIVE';
     const EDITION_BUSINESS = 'BUSINESS';
     const EDITION_PARTNER = 'PARTNER';
     
@@ -535,6 +542,13 @@ class Organisation implements ModelInterface, ArrayAccess
             self::MODEL_CLASS_NON_GST_CASHBOOK,
             self::MODEL_CLASS_ULTIMATE,
             self::MODEL_CLASS_LITE,
+            self::MODEL_CLASS_ULTIMATE_10,
+            self::MODEL_CLASS_ULTIMATE_20,
+            self::MODEL_CLASS_ULTIMATE_50,
+            self::MODEL_CLASS_ULTIMATE_100,
+            self::MODEL_CLASS_IGNITE,
+            self::MODEL_CLASS_GROW,
+            self::MODEL_CLASS_COMPREHENSIVE,
         ];
     }
     

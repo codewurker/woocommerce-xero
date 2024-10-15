@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -53,7 +53,6 @@ class LeaveLineCalculationType
     const FIXEDAMOUNTEACHPERIOD = 'FIXEDAMOUNTEACHPERIOD';
     const ENTERRATEINPAYTEMPLATE = 'ENTERRATEINPAYTEMPLATE';
     const BASEDONORDINARYEARNINGS = 'BASEDONORDINARYEARNINGS';
-    const EMPTY = '';
     
     /**
      * Gets allowable values of the enum
@@ -66,7 +65,6 @@ class LeaveLineCalculationType
             self::FIXEDAMOUNTEACHPERIOD,
             self::ENTERRATEINPAYTEMPLATE,
             self::BASEDONORDINARYEARNINGS,
-            self::EMPTY,
         ];
     }
 }

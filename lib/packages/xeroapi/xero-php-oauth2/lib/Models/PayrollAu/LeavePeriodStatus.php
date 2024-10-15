@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -50,6 +50,8 @@ class LeavePeriodStatus
      */
     const SCHEDULED = 'SCHEDULED';
     const PROCESSED = 'PROCESSED';
+    const REQUESTED = 'REQUESTED';
+    const REJECTED = 'REJECTED';
     
     /**
      * Gets allowable values of the enum
@@ -60,6 +62,8 @@ class LeavePeriodStatus
         return [
             self::SCHEDULED,
             self::PROCESSED,
+            self::REQUESTED,
+            self::REJECTED,
         ];
     }
 }

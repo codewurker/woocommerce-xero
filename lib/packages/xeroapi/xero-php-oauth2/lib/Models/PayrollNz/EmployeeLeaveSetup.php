@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -68,7 +68,9 @@ class EmployeeLeaveSetup implements ModelInterface, ArrayAccess
         'negative_annual_leave_balance_paid_amount' => 'double',
         'sick_leave_hours_to_accrue_annually' => 'double',
         'sick_leave_maximum_hours_to_accrue' => 'double',
-        'sick_leave_opening_balance' => 'double'
+        'sick_leave_opening_balance' => 'double',
+        'sick_leave_schedule_of_accrual' => 'string',
+        'sick_leave_anniversary_date' => '\DateTime'
     ];
 
     /**
@@ -83,7 +85,9 @@ class EmployeeLeaveSetup implements ModelInterface, ArrayAccess
         'negative_annual_leave_balance_paid_amount' => 'double',
         'sick_leave_hours_to_accrue_annually' => 'double',
         'sick_leave_maximum_hours_to_accrue' => 'double',
-        'sick_leave_opening_balance' => 'double'
+        'sick_leave_opening_balance' => 'double',
+        'sick_leave_schedule_of_accrual' => null,
+        'sick_leave_anniversary_date' => 'date'
     ];
 
     /**
@@ -119,7 +123,9 @@ class EmployeeLeaveSetup implements ModelInterface, ArrayAccess
         'negative_annual_leave_balance_paid_amount' => 'negativeAnnualLeaveBalancePaidAmount',
         'sick_leave_hours_to_accrue_annually' => 'sickLeaveHoursToAccrueAnnually',
         'sick_leave_maximum_hours_to_accrue' => 'sickLeaveMaximumHoursToAccrue',
-        'sick_leave_opening_balance' => 'sickLeaveOpeningBalance'
+        'sick_leave_opening_balance' => 'sickLeaveOpeningBalance',
+        'sick_leave_schedule_of_accrual' => 'SickLeaveScheduleOfAccrual',
+        'sick_leave_anniversary_date' => 'SickLeaveAnniversaryDate'
     ];
 
     /**
@@ -134,7 +140,9 @@ class EmployeeLeaveSetup implements ModelInterface, ArrayAccess
         'negative_annual_leave_balance_paid_amount' => 'setNegativeAnnualLeaveBalancePaidAmount',
         'sick_leave_hours_to_accrue_annually' => 'setSickLeaveHoursToAccrueAnnually',
         'sick_leave_maximum_hours_to_accrue' => 'setSickLeaveMaximumHoursToAccrue',
-        'sick_leave_opening_balance' => 'setSickLeaveOpeningBalance'
+        'sick_leave_opening_balance' => 'setSickLeaveOpeningBalance',
+        'sick_leave_schedule_of_accrual' => 'setSickLeaveScheduleOfAccrual',
+        'sick_leave_anniversary_date' => 'setSickLeaveAnniversaryDate'
     ];
 
     /**
@@ -149,7 +157,9 @@ class EmployeeLeaveSetup implements ModelInterface, ArrayAccess
         'negative_annual_leave_balance_paid_amount' => 'getNegativeAnnualLeaveBalancePaidAmount',
         'sick_leave_hours_to_accrue_annually' => 'getSickLeaveHoursToAccrueAnnually',
         'sick_leave_maximum_hours_to_accrue' => 'getSickLeaveMaximumHoursToAccrue',
-        'sick_leave_opening_balance' => 'getSickLeaveOpeningBalance'
+        'sick_leave_opening_balance' => 'getSickLeaveOpeningBalance',
+        'sick_leave_schedule_of_accrual' => 'getSickLeaveScheduleOfAccrual',
+        'sick_leave_anniversary_date' => 'getSickLeaveAnniversaryDate'
     ];
 
     /**
@@ -219,6 +229,8 @@ class EmployeeLeaveSetup implements ModelInterface, ArrayAccess
         $this->container['sick_leave_hours_to_accrue_annually'] = isset($data['sick_leave_hours_to_accrue_annually']) ? $data['sick_leave_hours_to_accrue_annually'] : null;
         $this->container['sick_leave_maximum_hours_to_accrue'] = isset($data['sick_leave_maximum_hours_to_accrue']) ? $data['sick_leave_maximum_hours_to_accrue'] : null;
         $this->container['sick_leave_opening_balance'] = isset($data['sick_leave_opening_balance']) ? $data['sick_leave_opening_balance'] : null;
+        $this->container['sick_leave_schedule_of_accrual'] = isset($data['sick_leave_schedule_of_accrual']) ? $data['sick_leave_schedule_of_accrual'] : null;
+        $this->container['sick_leave_anniversary_date'] = isset($data['sick_leave_anniversary_date']) ? $data['sick_leave_anniversary_date'] : null;
     }
 
     /**
@@ -428,6 +440,60 @@ class EmployeeLeaveSetup implements ModelInterface, ArrayAccess
     {
 
         $this->container['sick_leave_opening_balance'] = $sick_leave_opening_balance;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets sick_leave_schedule_of_accrual
+     *
+     * @return string|null
+     */
+    public function getSickLeaveScheduleOfAccrual()
+    {
+        return $this->container['sick_leave_schedule_of_accrual'];
+    }
+
+    /**
+     * Sets sick_leave_schedule_of_accrual
+     *
+     * @param string|null $sick_leave_schedule_of_accrual Set Schedule of Accrual Type for Sick Leave
+     *
+     * @return $this
+     */
+    public function setSickLeaveScheduleOfAccrual($sick_leave_schedule_of_accrual)
+    {
+
+        $this->container['sick_leave_schedule_of_accrual'] = $sick_leave_schedule_of_accrual;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets sick_leave_anniversary_date
+     *
+     * @return \DateTime|null
+     */
+    public function getSickLeaveAnniversaryDate()
+    {
+        return $this->container['sick_leave_anniversary_date'];
+    }
+
+    /**
+     * Sets sick_leave_anniversary_date
+     *
+     * @param \DateTime|null $sick_leave_anniversary_date If Sick Leave Schedule of Accrual is \"OnAnniversaryDate\", this is the date when entitled to Sick Leave
+     *
+     * @return $this
+     */
+    public function setSickLeaveAnniversaryDate($sick_leave_anniversary_date)
+    {
+
+        $this->container['sick_leave_anniversary_date'] = $sick_leave_anniversary_date;
 
         return $this;
     }

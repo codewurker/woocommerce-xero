@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -68,7 +68,8 @@ class OpeningBalances implements ModelInterface, ArrayAccess
         'deduction_lines' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\DeductionLine[]',
         'super_lines' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\SuperLine[]',
         'reimbursement_lines' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\ReimbursementLine[]',
-        'leave_lines' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\LeaveLine[]'
+        'leave_lines' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\LeaveLine[]',
+        'paid_leave_earnings_lines' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PaidLeaveEarningsLine[]'
     ];
 
     /**
@@ -83,7 +84,8 @@ class OpeningBalances implements ModelInterface, ArrayAccess
         'deduction_lines' => null,
         'super_lines' => null,
         'reimbursement_lines' => null,
-        'leave_lines' => null
+        'leave_lines' => null,
+        'paid_leave_earnings_lines' => null
     ];
 
     /**
@@ -119,7 +121,8 @@ class OpeningBalances implements ModelInterface, ArrayAccess
         'deduction_lines' => 'DeductionLines',
         'super_lines' => 'SuperLines',
         'reimbursement_lines' => 'ReimbursementLines',
-        'leave_lines' => 'LeaveLines'
+        'leave_lines' => 'LeaveLines',
+        'paid_leave_earnings_lines' => 'PaidLeaveEarningsLines'
     ];
 
     /**
@@ -134,7 +137,8 @@ class OpeningBalances implements ModelInterface, ArrayAccess
         'deduction_lines' => 'setDeductionLines',
         'super_lines' => 'setSuperLines',
         'reimbursement_lines' => 'setReimbursementLines',
-        'leave_lines' => 'setLeaveLines'
+        'leave_lines' => 'setLeaveLines',
+        'paid_leave_earnings_lines' => 'setPaidLeaveEarningsLines'
     ];
 
     /**
@@ -149,7 +153,8 @@ class OpeningBalances implements ModelInterface, ArrayAccess
         'deduction_lines' => 'getDeductionLines',
         'super_lines' => 'getSuperLines',
         'reimbursement_lines' => 'getReimbursementLines',
-        'leave_lines' => 'getLeaveLines'
+        'leave_lines' => 'getLeaveLines',
+        'paid_leave_earnings_lines' => 'getPaidLeaveEarningsLines'
     ];
 
     /**
@@ -219,6 +224,7 @@ class OpeningBalances implements ModelInterface, ArrayAccess
         $this->container['super_lines'] = isset($data['super_lines']) ? $data['super_lines'] : null;
         $this->container['reimbursement_lines'] = isset($data['reimbursement_lines']) ? $data['reimbursement_lines'] : null;
         $this->container['leave_lines'] = isset($data['leave_lines']) ? $data['leave_lines'] : null;
+        $this->container['paid_leave_earnings_lines'] = isset($data['paid_leave_earnings_lines']) ? $data['paid_leave_earnings_lines'] : null;
     }
 
     /**
@@ -454,6 +460,33 @@ class OpeningBalances implements ModelInterface, ArrayAccess
     {
 
         $this->container['leave_lines'] = $leave_lines;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets paid_leave_earnings_lines
+     *
+     * @return \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PaidLeaveEarningsLine[]|null
+     */
+    public function getPaidLeaveEarningsLines()
+    {
+        return $this->container['paid_leave_earnings_lines'];
+    }
+
+    /**
+     * Sets paid_leave_earnings_lines
+     *
+     * @param \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PaidLeaveEarningsLine[]|null $paid_leave_earnings_lines paid_leave_earnings_lines
+     *
+     * @return $this
+     */
+    public function setPaidLeaveEarningsLines($paid_leave_earnings_lines)
+    {
+
+        $this->container['paid_leave_earnings_lines'] = $paid_leave_earnings_lines;
 
         return $this;
     }

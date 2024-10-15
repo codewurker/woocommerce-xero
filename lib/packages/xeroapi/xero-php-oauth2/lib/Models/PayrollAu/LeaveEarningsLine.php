@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -64,7 +64,8 @@ class LeaveEarningsLine implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'earnings_rate_id' => 'string',
         'rate_per_unit' => 'double',
-        'number_of_units' => 'double'
+        'number_of_units' => 'double',
+        'pay_out_type' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PayOutType'
     ];
 
     /**
@@ -75,7 +76,8 @@ class LeaveEarningsLine implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'earnings_rate_id' => 'uuid',
         'rate_per_unit' => 'double',
-        'number_of_units' => 'double'
+        'number_of_units' => 'double',
+        'pay_out_type' => null
     ];
 
     /**
@@ -107,7 +109,8 @@ class LeaveEarningsLine implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'earnings_rate_id' => 'EarningsRateID',
         'rate_per_unit' => 'RatePerUnit',
-        'number_of_units' => 'NumberOfUnits'
+        'number_of_units' => 'NumberOfUnits',
+        'pay_out_type' => 'PayOutType'
     ];
 
     /**
@@ -118,7 +121,8 @@ class LeaveEarningsLine implements ModelInterface, ArrayAccess
     protected static $setters = [
         'earnings_rate_id' => 'setEarningsRateId',
         'rate_per_unit' => 'setRatePerUnit',
-        'number_of_units' => 'setNumberOfUnits'
+        'number_of_units' => 'setNumberOfUnits',
+        'pay_out_type' => 'setPayOutType'
     ];
 
     /**
@@ -129,7 +133,8 @@ class LeaveEarningsLine implements ModelInterface, ArrayAccess
     protected static $getters = [
         'earnings_rate_id' => 'getEarningsRateId',
         'rate_per_unit' => 'getRatePerUnit',
-        'number_of_units' => 'getNumberOfUnits'
+        'number_of_units' => 'getNumberOfUnits',
+        'pay_out_type' => 'getPayOutType'
     ];
 
     /**
@@ -195,6 +200,7 @@ class LeaveEarningsLine implements ModelInterface, ArrayAccess
         $this->container['earnings_rate_id'] = isset($data['earnings_rate_id']) ? $data['earnings_rate_id'] : null;
         $this->container['rate_per_unit'] = isset($data['rate_per_unit']) ? $data['rate_per_unit'] : null;
         $this->container['number_of_units'] = isset($data['number_of_units']) ? $data['number_of_units'] : null;
+        $this->container['pay_out_type'] = isset($data['pay_out_type']) ? $data['pay_out_type'] : null;
     }
 
     /**
@@ -296,6 +302,33 @@ class LeaveEarningsLine implements ModelInterface, ArrayAccess
     {
 
         $this->container['number_of_units'] = $number_of_units;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets pay_out_type
+     *
+     * @return \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PayOutType|null
+     */
+    public function getPayOutType()
+    {
+        return $this->container['pay_out_type'];
+    }
+
+    /**
+     * Sets pay_out_type
+     *
+     * @param \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\PayrollAu\PayOutType|null $pay_out_type pay_out_type
+     *
+     * @return $this
+     */
+    public function setPayOutType($pay_out_type)
+    {
+
+        $this->container['pay_out_type'] = $pay_out_type;
 
         return $this;
     }

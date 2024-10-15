@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -212,7 +212,6 @@ class CurrencyCode
     const ZMW = 'ZMW';
     const ZMK = 'ZMK';
     const ZWD = 'ZWD';
-    const EMPTY = '';
     
     /**
      * Gets allowable values of the enum
@@ -384,7 +383,6 @@ class CurrencyCode
             self::ZMW,
             self::ZMK,
             self::ZWD,
-            self::EMPTY,
         ];
     }
 }

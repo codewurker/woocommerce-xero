@@ -2,7 +2,7 @@
 /**
  * @license MIT
  *
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 namespace Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP;
@@ -42,7 +42,7 @@ class JWTClaims
     private function verify($token) {
         $json = file_get_contents('https://identity.xero.com/.well-known/openid-configuration/jwks');
         $jwks =  json_decode($json, true);
-        $supportedAlgorithm = array('RS256');
+        $supportedAlgorithm = (object) ['alg'=>['RS256','ES256']];
         $verifiedJWT = JWT::decode($token, JWK::parseKeySet($jwks), $supportedAlgorithm);
 
         return $verifiedJWT;
@@ -88,7 +88,7 @@ class JWTClaims
         $this->sid = $verifiedJWT->sid;
         $this->subvalue = $verifiedJWT->sub;
         $this->auth_time = $verifiedJWT->auth_time;
-        $this->preferred_username = $verifiedJWT->preferred_username;
+        $this->username = $verifiedJWT->preferred_username;
         $this->email = $verifiedJWT->email;
         $this->given_name = $verifiedJWT->given_name;
         $this->family_name = $verifiedJWT->family_name;

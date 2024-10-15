@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -62,6 +62,8 @@ class BankTransactions implements ModelInterface, ArrayAccess, \Countable, \Iter
       * @var string[]
       */
     protected static $openAPITypes = [
+        'pagination' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\Pagination',
+        'warnings' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]',
         'bank_transactions' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\BankTransaction[]'
     ];
 
@@ -71,6 +73,8 @@ class BankTransactions implements ModelInterface, ArrayAccess, \Countable, \Iter
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'pagination' => null,
+        'warnings' => null,
         'bank_transactions' => null
     ];
 
@@ -101,6 +105,8 @@ class BankTransactions implements ModelInterface, ArrayAccess, \Countable, \Iter
      * @var string[]
      */
     protected static $attributeMap = [
+        'pagination' => 'pagination',
+        'warnings' => 'Warnings',
         'bank_transactions' => 'BankTransactions'
     ];
 
@@ -110,6 +116,8 @@ class BankTransactions implements ModelInterface, ArrayAccess, \Countable, \Iter
      * @var string[]
      */
     protected static $setters = [
+        'pagination' => 'setPagination',
+        'warnings' => 'setWarnings',
         'bank_transactions' => 'setBankTransactions'
     ];
 
@@ -119,6 +127,8 @@ class BankTransactions implements ModelInterface, ArrayAccess, \Countable, \Iter
      * @var string[]
      */
     protected static $getters = [
+        'pagination' => 'getPagination',
+        'warnings' => 'getWarnings',
         'bank_transactions' => 'getBankTransactions'
     ];
 
@@ -182,6 +192,8 @@ class BankTransactions implements ModelInterface, ArrayAccess, \Countable, \Iter
      */
     public function __construct(array $data = null)
     {
+        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
+        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
         $this->container['bank_transactions'] = isset($data['bank_transactions']) ? $data['bank_transactions'] : null;
     }
 
@@ -207,6 +219,60 @@ class BankTransactions implements ModelInterface, ArrayAccess, \Countable, \Iter
     {
         return count($this->listInvalidProperties()) === 0;
     }
+
+
+    /**
+     * Gets pagination
+     *
+     * @return \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\Pagination|null
+     */
+    public function getPagination()
+    {
+        return $this->container['pagination'];
+    }
+
+    /**
+     * Sets pagination
+     *
+     * @param \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\Pagination|null $pagination pagination
+     *
+     * @return $this
+     */
+    public function setPagination($pagination)
+    {
+
+        $this->container['pagination'] = $pagination;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets warnings
+     *
+     * @return \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]|null $warnings Displays array of warning messages from the API
+     *
+     * @return $this
+     */
+    public function setWarnings($warnings)
+    {
+
+        $this->container['warnings'] = $warnings;
+
+        return $this;
+    }
+
 
 
     /**
@@ -307,7 +373,16 @@ class BankTransactions implements ModelInterface, ArrayAccess, \Countable, \Iter
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-        return AccountingObjectSerializer::sanitizeForSerialization($this)->BankTransactions;
+       $sanitizedObject = AccountingObjectSerializer::sanitizeForSerialization($this);
+        $json = [];
+        if(isset($sanitizedObject->pagination)){
+            $json['pagination'] = $sanitizedObject->pagination;
+        }
+        if(isset($sanitizedObject->warnings)){
+            $json['warnings'] = $sanitizedObject->warnings;
+        }
+        $json['BankTransactions'] = $sanitizedObject->BankTransactions;
+        return $json;
     }
 
     /**

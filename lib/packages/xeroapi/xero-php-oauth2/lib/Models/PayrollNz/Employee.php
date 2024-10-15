@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -75,7 +75,10 @@ class Employee implements ModelInterface, ArrayAccess
         'end_date' => '\DateTime',
         'payroll_calendar_id' => 'string',
         'updated_date_utc' => '\DateTime',
-        'created_date_utc' => '\DateTime'
+        'created_date_utc' => '\DateTime',
+        'job_title' => 'string',
+        'engagement_type' => 'string',
+        'fixed_term_end_date' => '\DateTime'
     ];
 
     /**
@@ -97,7 +100,10 @@ class Employee implements ModelInterface, ArrayAccess
         'end_date' => 'date',
         'payroll_calendar_id' => 'uuid',
         'updated_date_utc' => 'date-time',
-        'created_date_utc' => 'date-time'
+        'created_date_utc' => 'date-time',
+        'job_title' => null,
+        'engagement_type' => null,
+        'fixed_term_end_date' => 'date'
     ];
 
     /**
@@ -140,7 +146,10 @@ class Employee implements ModelInterface, ArrayAccess
         'end_date' => 'endDate',
         'payroll_calendar_id' => 'payrollCalendarID',
         'updated_date_utc' => 'updatedDateUTC',
-        'created_date_utc' => 'createdDateUTC'
+        'created_date_utc' => 'createdDateUTC',
+        'job_title' => 'jobTitle',
+        'engagement_type' => 'engagementType',
+        'fixed_term_end_date' => 'fixedTermEndDate'
     ];
 
     /**
@@ -162,7 +171,10 @@ class Employee implements ModelInterface, ArrayAccess
         'end_date' => 'setEndDate',
         'payroll_calendar_id' => 'setPayrollCalendarId',
         'updated_date_utc' => 'setUpdatedDateUtc',
-        'created_date_utc' => 'setCreatedDateUtc'
+        'created_date_utc' => 'setCreatedDateUtc',
+        'job_title' => 'setJobTitle',
+        'engagement_type' => 'setEngagementType',
+        'fixed_term_end_date' => 'setFixedTermEndDate'
     ];
 
     /**
@@ -184,7 +196,10 @@ class Employee implements ModelInterface, ArrayAccess
         'end_date' => 'getEndDate',
         'payroll_calendar_id' => 'getPayrollCalendarId',
         'updated_date_utc' => 'getUpdatedDateUtc',
-        'created_date_utc' => 'getCreatedDateUtc'
+        'created_date_utc' => 'getCreatedDateUtc',
+        'job_title' => 'getJobTitle',
+        'engagement_type' => 'getEngagementType',
+        'fixed_term_end_date' => 'getFixedTermEndDate'
     ];
 
     /**
@@ -276,6 +291,9 @@ class Employee implements ModelInterface, ArrayAccess
         $this->container['payroll_calendar_id'] = isset($data['payroll_calendar_id']) ? $data['payroll_calendar_id'] : null;
         $this->container['updated_date_utc'] = isset($data['updated_date_utc']) ? $data['updated_date_utc'] : null;
         $this->container['created_date_utc'] = isset($data['created_date_utc']) ? $data['created_date_utc'] : null;
+        $this->container['job_title'] = isset($data['job_title']) ? $data['job_title'] : null;
+        $this->container['engagement_type'] = isset($data['engagement_type']) ? $data['engagement_type'] : null;
+        $this->container['fixed_term_end_date'] = isset($data['fixed_term_end_date']) ? $data['fixed_term_end_date'] : null;
     }
 
     /**
@@ -691,6 +709,87 @@ class Employee implements ModelInterface, ArrayAccess
     {
 
         $this->container['created_date_utc'] = $created_date_utc;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets job_title
+     *
+     * @return string|null
+     */
+    public function getJobTitle()
+    {
+        return $this->container['job_title'];
+    }
+
+    /**
+     * Sets job_title
+     *
+     * @param string|null $job_title Employee's job title
+     *
+     * @return $this
+     */
+    public function setJobTitle($job_title)
+    {
+
+        $this->container['job_title'] = $job_title;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets engagement_type
+     *
+     * @return string|null
+     */
+    public function getEngagementType()
+    {
+        return $this->container['engagement_type'];
+    }
+
+    /**
+     * Sets engagement_type
+     *
+     * @param string|null $engagement_type Engagement type of the employee
+     *
+     * @return $this
+     */
+    public function setEngagementType($engagement_type)
+    {
+
+        $this->container['engagement_type'] = $engagement_type;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets fixed_term_end_date
+     *
+     * @return \DateTime|null
+     */
+    public function getFixedTermEndDate()
+    {
+        return $this->container['fixed_term_end_date'];
+    }
+
+    /**
+     * Sets fixed_term_end_date
+     *
+     * @param \DateTime|null $fixed_term_end_date End date for an employee with a fixed-term engagement type
+     *
+     * @return $this
+     */
+    public function setFixedTermEndDate($fixed_term_end_date)
+    {
+
+        $this->container['fixed_term_end_date'] = $fixed_term_end_date;
 
         return $this;
     }

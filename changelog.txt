@@ -1,5 +1,14 @@
 *** Xero Integration ***
 
+2024-10-14 - version 1.9.0
+* Fix - Use a separate country list for the report tax type when creating a tax rate in Xero.
+* Dev - Update secret key encryption to use the Sodium library for token encryption.
+* Dev - Upgrade the `xeroapi/xero-php-oauth2` SDK from version 2.20.0 to version 7.2.0.
+* Dev - Bump WooCommerce "tested up to" version 9.4.
+* Dev - Bump WooCommerce minimum supported version to 9.2.
+* Dev - Bump WordPress minimum supported version to 6.5.
+* Dev - Remove Xero OAuth 1.0 Authentication as it is fully deprecated.
+
 2024-08-19 - version 1.8.9
 * Fix - PHPCompatibility errors reported by the QIT test.
 * Dev - Bump WooCommerce "tested up to" version 9.2.

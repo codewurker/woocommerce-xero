@@ -9,7 +9,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -161,7 +161,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = '[xero-php-oauth2 (2.20.0)]';
+    protected $userAgent = '[xero-php-oauth2 (7.2.0)]';
 
     /**
      * Debug switch (default set to false)
@@ -700,8 +700,8 @@ class Configuration
         $report  = 'PHP SDK (XeroAPI\XeroPHP) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    OpenAPI Spec Version: 2.35.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 2.20.0' . PHP_EOL;
+        $report .= '    OpenAPI Spec Version: 6.2.0' . PHP_EOL;
+        $report .= '    SDK Package Version: 7.2.0' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;

@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -66,11 +66,7 @@ class AccountType
     const REVENUE = 'REVENUE';
     const SALES = 'SALES';
     const TERMLIAB = 'TERMLIAB';
-    const PAYGLIABILITY = 'PAYGLIABILITY';
     const PAYG = 'PAYG';
-    const SUPERANNUATIONEXPENSE = 'SUPERANNUATIONEXPENSE';
-    const SUPERANNUATIONLIABILITY = 'SUPERANNUATIONLIABILITY';
-    const WAGESEXPENSE = 'WAGESEXPENSE';
     
     /**
      * Gets allowable values of the enum
@@ -96,11 +92,7 @@ class AccountType
             self::REVENUE,
             self::SALES,
             self::TERMLIAB,
-            self::PAYGLIABILITY,
             self::PAYG,
-            self::SUPERANNUATIONEXPENSE,
-            self::SUPERANNUATIONLIABILITY,
-            self::WAGESEXPENSE,
         ];
     }
 }

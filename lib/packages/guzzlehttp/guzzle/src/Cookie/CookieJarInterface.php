@@ -2,7 +2,7 @@
 /**
  * @license MIT
  *
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -68,7 +68,7 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      * @param string|null $path   Clears cookies matching a domain and path
      * @param string|null $name   Clears cookies matching a domain, path, and name
      */
-    public function clear(string $domain = null, string $path = null, string $name = null): void;
+    public function clear(?string $domain = null, ?string $path = null, ?string $name = null): void;
 
     /**
      * Discard all sessions cookies.

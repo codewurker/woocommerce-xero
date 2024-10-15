@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -71,7 +71,8 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         'effective_from' => '\DateTime',
         'annual_salary' => 'double',
         'status' => 'string',
-        'payment_type' => 'string'
+        'payment_type' => 'string',
+        'work_pattern_type' => 'string'
     ];
 
     /**
@@ -89,7 +90,8 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         'effective_from' => 'date',
         'annual_salary' => 'double',
         'status' => null,
-        'payment_type' => null
+        'payment_type' => null,
+        'work_pattern_type' => null
     ];
 
     /**
@@ -128,7 +130,8 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         'effective_from' => 'effectiveFrom',
         'annual_salary' => 'annualSalary',
         'status' => 'status',
-        'payment_type' => 'paymentType'
+        'payment_type' => 'paymentType',
+        'work_pattern_type' => 'workPatternType'
     ];
 
     /**
@@ -146,7 +149,8 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         'effective_from' => 'setEffectiveFrom',
         'annual_salary' => 'setAnnualSalary',
         'status' => 'setStatus',
-        'payment_type' => 'setPaymentType'
+        'payment_type' => 'setPaymentType',
+        'work_pattern_type' => 'setWorkPatternType'
     ];
 
     /**
@@ -164,7 +168,8 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         'effective_from' => 'getEffectiveFrom',
         'annual_salary' => 'getAnnualSalary',
         'status' => 'getStatus',
-        'payment_type' => 'getPaymentType'
+        'payment_type' => 'getPaymentType',
+        'work_pattern_type' => 'getWorkPatternType'
     ];
 
     /**
@@ -213,6 +218,8 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
     const STATUS_HISTORY = 'History';
     const PAYMENT_TYPE_SALARY = 'Salary';
     const PAYMENT_TYPE_HOURLY = 'Hourly';
+    const WORK_PATTERN_TYPE_DAYS_AND_HOURS = 'DaysAndHours';
+    const WORK_PATTERN_TYPE_REGULAR_WEEK = 'RegularWeek';
     
 
     
@@ -243,6 +250,19 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         ];
     }
     
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getWorkPatternTypeAllowableValues()
+    {
+        return [
+            self::WORK_PATTERN_TYPE_DAYS_AND_HOURS,
+            self::WORK_PATTERN_TYPE_REGULAR_WEEK,
+        ];
+    }
+    
 
     /**
      * Associative array for storing property values
@@ -269,6 +289,7 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         $this->container['annual_salary'] = isset($data['annual_salary']) ? $data['annual_salary'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['payment_type'] = isset($data['payment_type']) ? $data['payment_type'] : null;
+        $this->container['work_pattern_type'] = isset($data['work_pattern_type']) ? $data['work_pattern_type'] : null;
     }
 
     /**
@@ -313,6 +334,14 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         if (!is_null($this->container['payment_type']) && !in_array($this->container['payment_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'payment_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getWorkPatternTypeAllowableValues();
+        if (!is_null($this->container['work_pattern_type']) && !in_array($this->container['work_pattern_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'work_pattern_type', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -614,6 +643,42 @@ class SalaryAndWage implements ModelInterface, ArrayAccess
         }
 
         $this->container['payment_type'] = $payment_type;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets work_pattern_type
+     *
+     * @return string|null
+     */
+    public function getWorkPatternType()
+    {
+        return $this->container['work_pattern_type'];
+    }
+
+    /**
+     * Sets work_pattern_type
+     *
+     * @param string|null $work_pattern_type The type of the Working Pattern of the corresponding salary and wages
+     *
+     * @return $this
+     */
+    public function setWorkPatternType($work_pattern_type)
+    {
+        $allowedValues = $this->getWorkPatternTypeAllowableValues();
+        if (!is_null($work_pattern_type) && !in_array($work_pattern_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'work_pattern_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+
+        $this->container['work_pattern_type'] = $work_pattern_type;
 
         return $this;
     }

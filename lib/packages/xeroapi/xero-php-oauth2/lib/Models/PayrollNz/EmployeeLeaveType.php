@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -71,7 +71,8 @@ class EmployeeLeaveType implements ModelInterface, ArrayAccess
         'percentage_of_gross_earnings' => 'double',
         'include_holiday_pay_every_pay' => 'bool',
         'show_annual_leave_in_advance' => 'bool',
-        'annual_leave_total_amount_paid' => 'double'
+        'annual_leave_total_amount_paid' => 'double',
+        'schedule_of_accrual_date' => '\DateTime'
     ];
 
     /**
@@ -89,7 +90,8 @@ class EmployeeLeaveType implements ModelInterface, ArrayAccess
         'percentage_of_gross_earnings' => 'double',
         'include_holiday_pay_every_pay' => null,
         'show_annual_leave_in_advance' => null,
-        'annual_leave_total_amount_paid' => 'double'
+        'annual_leave_total_amount_paid' => 'double',
+        'schedule_of_accrual_date' => 'date'
     ];
 
     /**
@@ -128,7 +130,8 @@ class EmployeeLeaveType implements ModelInterface, ArrayAccess
         'percentage_of_gross_earnings' => 'percentageOfGrossEarnings',
         'include_holiday_pay_every_pay' => 'includeHolidayPayEveryPay',
         'show_annual_leave_in_advance' => 'showAnnualLeaveInAdvance',
-        'annual_leave_total_amount_paid' => 'annualLeaveTotalAmountPaid'
+        'annual_leave_total_amount_paid' => 'annualLeaveTotalAmountPaid',
+        'schedule_of_accrual_date' => 'scheduleOfAccrualDate'
     ];
 
     /**
@@ -146,7 +149,8 @@ class EmployeeLeaveType implements ModelInterface, ArrayAccess
         'percentage_of_gross_earnings' => 'setPercentageOfGrossEarnings',
         'include_holiday_pay_every_pay' => 'setIncludeHolidayPayEveryPay',
         'show_annual_leave_in_advance' => 'setShowAnnualLeaveInAdvance',
-        'annual_leave_total_amount_paid' => 'setAnnualLeaveTotalAmountPaid'
+        'annual_leave_total_amount_paid' => 'setAnnualLeaveTotalAmountPaid',
+        'schedule_of_accrual_date' => 'setScheduleOfAccrualDate'
     ];
 
     /**
@@ -164,7 +168,8 @@ class EmployeeLeaveType implements ModelInterface, ArrayAccess
         'percentage_of_gross_earnings' => 'getPercentageOfGrossEarnings',
         'include_holiday_pay_every_pay' => 'getIncludeHolidayPayEveryPay',
         'show_annual_leave_in_advance' => 'getShowAnnualLeaveInAdvance',
-        'annual_leave_total_amount_paid' => 'getAnnualLeaveTotalAmountPaid'
+        'annual_leave_total_amount_paid' => 'getAnnualLeaveTotalAmountPaid',
+        'schedule_of_accrual_date' => 'getScheduleOfAccrualDate'
     ];
 
     /**
@@ -256,6 +261,7 @@ class EmployeeLeaveType implements ModelInterface, ArrayAccess
         $this->container['include_holiday_pay_every_pay'] = isset($data['include_holiday_pay_every_pay']) ? $data['include_holiday_pay_every_pay'] : null;
         $this->container['show_annual_leave_in_advance'] = isset($data['show_annual_leave_in_advance']) ? $data['show_annual_leave_in_advance'] : null;
         $this->container['annual_leave_total_amount_paid'] = isset($data['annual_leave_total_amount_paid']) ? $data['annual_leave_total_amount_paid'] : null;
+        $this->container['schedule_of_accrual_date'] = isset($data['schedule_of_accrual_date']) ? $data['schedule_of_accrual_date'] : null;
     }
 
     /**
@@ -563,6 +569,33 @@ class EmployeeLeaveType implements ModelInterface, ArrayAccess
     {
 
         $this->container['annual_leave_total_amount_paid'] = $annual_leave_total_amount_paid;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Gets schedule_of_accrual_date
+     *
+     * @return \DateTime|null
+     */
+    public function getScheduleOfAccrualDate()
+    {
+        return $this->container['schedule_of_accrual_date'];
+    }
+
+    /**
+     * Sets schedule_of_accrual_date
+     *
+     * @param \DateTime|null $schedule_of_accrual_date The date when an employee becomes entitled to their accrual.
+     *
+     * @return $this
+     */
+    public function setScheduleOfAccrualDate($schedule_of_accrual_date)
+    {
+
+        $this->container['schedule_of_accrual_date'] = $schedule_of_accrual_date;
 
         return $this;
     }

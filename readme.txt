@@ -8,78 +8,24 @@
 
 
 == Configuring A Connection to Xero ==
-
-Xero’s API uses 2 legged OAuth for validating all connections.  There are two steps to setting up the connection between your WooCommerce shopping cart and your Xero account.  First, you will need to generate a Self-signed Certificate (X509) for use with this module.  Second, you will need to define your WooCommerce site as a Public Application and allow it to connect to your Xero account.  Instructions for these steps are below.
-
-
-Step 1. Generating a Private/Public Key pair
-
-(These instructions are referenced from the Xero Blog)
-
--- Windows users --
-
-You can download OpenSSL for Windows here.
-
-http://www.slproweb.com/products/Win32OpenSSL.html
-
-To run the commands below, go tot he OpenSSL32 directory on your PS, and then change to the /bin directory.
-
-Note:  You may need to open the command prompt with elevated status (Run as administrator)  If the OpenSSL just recently installed, you might need to restart the computer
-
--- Mac users --
-
-OpenSSL comes shipped with Mac OS X.
-
-See http://developer.apple.com/mac/library/documentation/Darwin/Reference/ManPages/man1/openssl.1ssl.html for more info.
-
--- Using OpenSSL --
-
-Use a command line prompt and the following commands to generate a private and public key pair.
-
-1.  The following command will generate a private key file named "privatekey.pem" in the current directory
-
-openssl genrsa -out privatekey.pem 1024
-
-2.  This command uses the previously created private key file to create a public certificate to be used when setting up your private application in the next step.  You will be asked to provide 7 pieces of information about your company that will be included in the certificate file: Country Name (2 letter code), State or Province Name (Full name), Locality (eg city), Organization Name (eg, company), Organizational Unit Name (eg, section), Common Name (eg, Your name), Email Address.
-openssl req -newkey rsa:1024 -x509 -key privatekey.pem -out publickey.cer -days 365
-3.  To verify the files were created correctly, verify the first line of each file.
-
-The private key will begin with the following line:
-
-—–BEGIN RSA PRIVATE KEY—–
-
-The public certificate will begin with the following line:
-
-—–BEGIN CERTIFICATE—–
-
-Step 2.  Setup Up A Private Application in Xero
-
-  * Login to your Xero account at http://login.xero.com
-  * Once logged in, go to the API area at http://api.xero.com
-  * You will be at a page titled "Xero Developer Centre"
-  * Verify your name is in the top right corner of the page
-  * Click on the "My Applications" tab
-  * Click the "Add Application" button
-  * Fill out the form with the following options:
-		  * What type of application are you developing?  Select "Private"
-		  * Application Name: Enter the name of your WooCommerce site.
-		  * Please select which organisation your application can access:  Select which Xero company to access. The extension can only access one company at a time.
-		  * X509 Public Key Certificate: Paste the certificate file you created in Step 1. above.  Note: Certificate files begin with the text  "—–BEGIN CERTIFICATE—–"
-  * Press Save and you will be taken to the Edit Application page with the note "Application Added"
-  * The Edit Application page will have a box titled "OAuth Credentials" showing the "Consumer Key" and the "Consumer Secret".   These will be used in the next step – Configuring Xero for WooCommerce
-
+1. Sign up for a Xero account (https://www.xero.com/signup/developers/).
+2. Go to https://developer.xero.com/app/manage (you’ll be prompted to log in to Xero first).
+3. Click on “New App” to create a new application.
+4. Fill out the required fields:
+   * App Name: WooCommerce
+   * Company or Application URL: Your website URL
+   * OAuth 2.0 Redirect URI: https://YOUR_WEBSITE_DOMAIN/wp-admin/admin.php?page=woocommerce_xero_oauth
+   * Check the box for “I have read and agree to the terms and conditions.”
+5. Click on “Create App” to create the application.
+6. Copy the “Client ID” and “Client Secret” from the Configuration tab and save them for later.
+7. Go to WooCommerce > Xero.
+8. Fill out the "Client ID" and "Client Secret" fields with the OAuth credentials we copied in Step 6.
+9. Click on the "Save" button to save the configuration.
+10. Click on the "Sign in with Xero" button to connect your WooCommerce store to Xero.
+11. You will be redirected to Xero to authorize the connection. Follow the steps to authorize the connection.
+12. After the connection is authorized, you will be redirected back to your WooCommerce store.
 
 == Configuring Xero for WooCommerce ==
-
--- Setup OAuth Credentials --
-  * Login to your WordPress dashboard and go to WooCommerce > Xero to fill out the required configuration settings.
-  * Fill "Consumer Key" and "Consumer Secret" settings fields with the OAuth Credentials retrieved when registering your private application with Xero in the previous step.
-
--- Setup Certificate Files --
-  * The Public/Private key pair created in Step 1. above need to be placed on your hosting account
-  * Use an FTP/SFTP program to create a directory named "xero-certs" at the same level as your public_html directory
-  * Place the two files into this directory
-  * Fill the "Private Key" and "Public Key" settings fields with the paths to these files.  You may need to contact your web host to find the path for these files.
 
 -- Setup Default Account Numbers --
 

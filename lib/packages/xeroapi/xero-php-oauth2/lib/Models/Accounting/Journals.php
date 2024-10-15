@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -62,6 +62,7 @@ class Journals implements ModelInterface, ArrayAccess, \Countable, \IteratorAggr
       * @var string[]
       */
     protected static $openAPITypes = [
+        'warnings' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]',
         'journals' => '\Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\Journal[]'
     ];
 
@@ -71,6 +72,7 @@ class Journals implements ModelInterface, ArrayAccess, \Countable, \IteratorAggr
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'warnings' => null,
         'journals' => null
     ];
 
@@ -101,6 +103,7 @@ class Journals implements ModelInterface, ArrayAccess, \Countable, \IteratorAggr
      * @var string[]
      */
     protected static $attributeMap = [
+        'warnings' => 'Warnings',
         'journals' => 'Journals'
     ];
 
@@ -110,6 +113,7 @@ class Journals implements ModelInterface, ArrayAccess, \Countable, \IteratorAggr
      * @var string[]
      */
     protected static $setters = [
+        'warnings' => 'setWarnings',
         'journals' => 'setJournals'
     ];
 
@@ -119,6 +123,7 @@ class Journals implements ModelInterface, ArrayAccess, \Countable, \IteratorAggr
      * @var string[]
      */
     protected static $getters = [
+        'warnings' => 'getWarnings',
         'journals' => 'getJournals'
     ];
 
@@ -182,6 +187,7 @@ class Journals implements ModelInterface, ArrayAccess, \Countable, \IteratorAggr
      */
     public function __construct(array $data = null)
     {
+        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
         $this->container['journals'] = isset($data['journals']) ? $data['journals'] : null;
     }
 
@@ -207,6 +213,33 @@ class Journals implements ModelInterface, ArrayAccess, \Countable, \IteratorAggr
     {
         return count($this->listInvalidProperties()) === 0;
     }
+
+
+    /**
+     * Gets warnings
+     *
+     * @return \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \Automattic\WooCommerce\Xero\Vendor\XeroAPI\XeroPHP\Models\Accounting\ValidationError[]|null $warnings Displays array of warning messages from the API
+     *
+     * @return $this
+     */
+    public function setWarnings($warnings)
+    {
+
+        $this->container['warnings'] = $warnings;
+
+        return $this;
+    }
+
 
 
     /**
@@ -307,7 +340,16 @@ class Journals implements ModelInterface, ArrayAccess, \Countable, \IteratorAggr
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-        return AccountingObjectSerializer::sanitizeForSerialization($this)->Journals;
+       $sanitizedObject = AccountingObjectSerializer::sanitizeForSerialization($this);
+        $json = [];
+        if(isset($sanitizedObject->pagination)){
+            $json['pagination'] = $sanitizedObject->pagination;
+        }
+        if(isset($sanitizedObject->warnings)){
+            $json['warnings'] = $sanitizedObject->warnings;
+        }
+        $json['Journals'] = $sanitizedObject->Journals;
+        return $json;
     }
 
     /**

@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  *
  * @license MIT
- * Modified by woocommerce on 19-August-2024 using Strauss.
+ * Modified by woocommerce on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -78,6 +78,7 @@ class CurrencyCode
     const CAD = 'CAD';
     const CDF = 'CDF';
     const CHF = 'CHF';
+    const CLF = 'CLF';
     const CLP = 'CLP';
     const CNY = 'CNY';
     const COP = 'COP';
@@ -90,6 +91,7 @@ class CurrencyCode
     const DKK = 'DKK';
     const DOP = 'DOP';
     const DZD = 'DZD';
+    const EEK = 'EEK';
     const EGP = 'EGP';
     const ERN = 'ERN';
     const ETB = 'ETB';
@@ -98,7 +100,6 @@ class CurrencyCode
     const FKP = 'FKP';
     const GBP = 'GBP';
     const GEL = 'GEL';
-    const GGP = 'GGP';
     const GHS = 'GHS';
     const GIP = 'GIP';
     const GMD = 'GMD';
@@ -112,12 +113,10 @@ class CurrencyCode
     const HUF = 'HUF';
     const IDR = 'IDR';
     const ILS = 'ILS';
-    const IMP = 'IMP';
     const INR = 'INR';
     const IQD = 'IQD';
     const IRR = 'IRR';
     const ISK = 'ISK';
-    const JEP = 'JEP';
     const JMD = 'JMD';
     const JOD = 'JOD';
     const JPY = 'JPY';
@@ -136,6 +135,7 @@ class CurrencyCode
     const LRD = 'LRD';
     const LSL = 'LSL';
     const LTL = 'LTL';
+    const LVL = 'LVL';
     const LYD = 'LYD';
     const MAD = 'MAD';
     const MDL = 'MDL';
@@ -144,11 +144,13 @@ class CurrencyCode
     const MMK = 'MMK';
     const MNT = 'MNT';
     const MOP = 'MOP';
+    const MRO = 'MRO';
     const MRU = 'MRU';
     const MUR = 'MUR';
     const MVR = 'MVR';
     const MWK = 'MWK';
     const MXN = 'MXN';
+    const MXV = 'MXV';
     const MYR = 'MYR';
     const MZN = 'MZN';
     const NAD = 'NAD';
@@ -177,11 +179,13 @@ class CurrencyCode
     const SEK = 'SEK';
     const SGD = 'SGD';
     const SHP = 'SHP';
+    const SKK = 'SKK';
+    const SLE = 'SLE';
     const SLL = 'SLL';
     const SOS = 'SOS';
-    const SPL = 'SPL';
     const SRD = 'SRD';
-    const STN = 'STN';
+    const STN = 'STD';
+    const STD = 'STN';
     const SVC = 'SVC';
     const SYP = 'SYP';
     const SZL = 'SZL';
@@ -192,7 +196,6 @@ class CurrencyCode
     const TOP = 'TOP';
     const TRY_LIRA = 'TRY';
     const TTD = 'TTD';
-    const TVD = 'TVD';
     const TWD = 'TWD';
     const TZS = 'TZS';
     const UAH = 'UAH';
@@ -201,12 +204,12 @@ class CurrencyCode
     const UYU = 'UYU';
     const UZS = 'UZS';
     const VEF = 'VEF';
+    const VES = 'VES';
     const VND = 'VND';
     const VUV = 'VUV';
     const WST = 'WST';
     const XAF = 'XAF';
     const XCD = 'XCD';
-    const XDR = 'XDR';
     const XOF = 'XOF';
     const XPF = 'XPF';
     const YER = 'YER';
@@ -214,7 +217,6 @@ class CurrencyCode
     const ZMW = 'ZMW';
     const ZMK = 'ZMK';
     const ZWD = 'ZWD';
-    const EMPTY_CURRENCY = '';
     
     /**
      * Gets allowable values of the enum
@@ -252,6 +254,7 @@ class CurrencyCode
             self::CAD,
             self::CDF,
             self::CHF,
+            self::CLF,
             self::CLP,
             self::CNY,
             self::COP,
@@ -264,6 +267,7 @@ class CurrencyCode
             self::DKK,
             self::DOP,
             self::DZD,
+            self::EEK,
             self::EGP,
             self::ERN,
             self::ETB,
@@ -272,7 +276,6 @@ class CurrencyCode
             self::FKP,
             self::GBP,
             self::GEL,
-            self::GGP,
             self::GHS,
             self::GIP,
             self::GMD,
@@ -286,12 +289,10 @@ class CurrencyCode
             self::HUF,
             self::IDR,
             self::ILS,
-            self::IMP,
             self::INR,
             self::IQD,
             self::IRR,
             self::ISK,
-            self::JEP,
             self::JMD,
             self::JOD,
             self::JPY,
@@ -310,6 +311,7 @@ class CurrencyCode
             self::LRD,
             self::LSL,
             self::LTL,
+            self::LVL,
             self::LYD,
             self::MAD,
             self::MDL,
@@ -318,11 +320,13 @@ class CurrencyCode
             self::MMK,
             self::MNT,
             self::MOP,
+            self::MRO,
             self::MRU,
             self::MUR,
             self::MVR,
             self::MWK,
             self::MXN,
+            self::MXV,
             self::MYR,
             self::MZN,
             self::NAD,
@@ -351,11 +355,13 @@ class CurrencyCode
             self::SEK,
             self::SGD,
             self::SHP,
+            self::SKK,
+            self::SLE,
             self::SLL,
             self::SOS,
-            self::SPL,
             self::SRD,
             self::STN,
+            self::STD,
             self::SVC,
             self::SYP,
             self::SZL,
@@ -366,7 +372,6 @@ class CurrencyCode
             self::TOP,
             self::TRY_LIRA,
             self::TTD,
-            self::TVD,
             self::TWD,
             self::TZS,
             self::UAH,
@@ -375,12 +380,12 @@ class CurrencyCode
             self::UYU,
             self::UZS,
             self::VEF,
+            self::VES,
             self::VND,
             self::VUV,
             self::WST,
             self::XAF,
             self::XCD,
-            self::XDR,
             self::XOF,
             self::XPF,
             self::YER,
@@ -388,7 +393,6 @@ class CurrencyCode
             self::ZMW,
             self::ZMK,
             self::ZWD,
-            self::EMPTY_CURRENCY,
         ];
     }
 }
