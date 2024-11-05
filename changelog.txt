@@ -1,5 +1,10 @@
 *** Xero Integration ***
 
+2024-11-04 - version 1.9.1
+* Fix - Prevent fatal errors in the Xero connection process and enhance error handling.
+* Dev - Bump WordPress "tested up to" version 6.7.
+* Dev - Bump WordPress minimum supported version to 6.5.
+
 2024-10-14 - version 1.9.0
 * Fix - Use a separate country list for the report tax type when creating a tax rate in Xero.
 * Dev - Update secret key encryption to use the Sodium library for token encryption.

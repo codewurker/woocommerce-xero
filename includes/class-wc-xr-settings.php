@@ -482,22 +482,10 @@ class WC_XR_Settings {
 
 		// If we don't have an authorization code then get one.
 		if ( ! isset( $_GET['code'] ) ) {
-			?>
-			<div class="wrap woocommerce">
-			<div class="icon32 icon32-woocommerce-settings" id="icon-woocommerce"><br/></div>
-					<h2><?php esc_html_e( 'Xero OAuth', 'woocommerce-xero' ); ?></h2>
-					Something went wrong - token not received!
-			</div>
-			<?php
+			$this->print_xero_connection_status( array( 'errorMessage' => esc_html__( 'Something went wrong - token not received!', 'woocommerce-xero' ) ) );
 			// Check given state against previously stored one to mitigate CSRF attack.
 		} elseif ( empty( $_GET['state'] ) || ( $_GET['state'] !== $state_transient ) ) {
-			?>
-			<div class="wrap woocommerce">
-			<div class="icon32 icon32-woocommerce-settings" id="icon-woocommerce"><br/></div>
-					<h2><?php esc_html_e( 'Xero OAuth', 'woocommerce-xero' ); ?></h2>
-					Something went wrong - previous state is different. CSRF prevention.
-			</div>
-			<?php
+			$this->print_xero_connection_status( array( 'errorMessage' => esc_html__( 'Something went wrong - previous state is different. CSRF prevention.', 'woocommerce-xero' ) ) );
 		} else {
 			try {
 				$authorization_code = sanitize_text_field( $_GET['code'] );
@@ -510,9 +498,11 @@ class WC_XR_Settings {
 				if ( $wc_xr_data_encryption->are_custom_xero_auth_keys_set() ) {
 					update_option( 'wc_xero_auth_key_updated', true );
 				}
-			} catch ( \League\OAuth2\Client\Provider\Exception\IdentityProviderException $e ) {
+			} catch ( Automattic\WooCommerce\Xero\Vendor\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e ) {
 				if ( 'invalid_grant' === $e->getResponseBody()['error'] ) {
 					$this->print_xero_connection_status( array( 'errorMessage' => 'invalid_grant' ) );
+				} elseif ( 'invalid_client' === $e->getResponseBody()['error'] ) {
+					$this->print_xero_connection_status( array( 'errorMessage' => 'invalid_client' ) );
 				} else {
 					?>
 					<div class="wrap woocommerce">
@@ -526,7 +516,11 @@ class WC_XR_Settings {
 			}
 		}
 		// Go back link.
-		echo '</br><a href="' . esc_url( admin_url( 'admin.php?page=woocommerce_xero' ) ) . '">Go back to Xero settings page.</a>';
+		?>
+		<div class="wc-xero-status">
+			<a href="<?php echo esc_url( admin_url( 'admin.php?page=woocommerce_xero' ) ); ?>"><?php esc_html_e( 'Go back to Xero settings page.', 'woocommerce-xero' ); ?></a>
+		</div>
+		<?php
 	}
 
 	/**
@@ -712,28 +706,69 @@ class WC_XR_Settings {
 	/**
 	 * Helper function to print connection status.
 	 *
-	 * @param object $status
+	 * @param array $status Connection status.
 	 */
 	public function print_xero_connection_status( $status ) {
-		echo '<div class="wc-xero-oauth-redirect-page">WooCommerce Xero authorization redirect page.</div>';
-		echo '<div class="wc-xero-status">';
-		echo '<img class="wc-xero-logo" src= ' . esc_attr( WC_XERO_ABSURL ) . 'assets/xero_logo_blue.png>';
-		echo '</br><span><b>Connection status:</b>';
-		if ( array_key_exists( 'correctRequest', $status ) ) {
-			echo '<span class="wc-xero-oauth-connection-ok"><b> [OK]</b></span></span>';
-			echo '<div>You are connected to <b>' . esc_html( $status['connectedCompany'] ) . '</b> organisation.</div>';
-		} else {
-			if ( $status['errorMessage'] === 'invalid_grant' ) {
-				echo '<span class="wc-xero-oauth-connection-error"><b> [ERROR]</b></span></span>';
-				echo '<div>Cannot request the access token, please connect your application again!</div>';
-				echo '<div>For more information check the documentation page : <a href="https://docs.woocommerce.com/document/xero/#section-3">WooCommerce and Xero setup</a></div>';
-			} elseif ( $status['errorMessage'] === 'no_connection' ) {
-				echo '<div>Application not authorized with Xero! Pleas click Sign in with Xero button.</div>';
+		?>
+		<div class="wc-xero-oauth-redirect-page"><?php esc_html_e( 'WooCommerce Xero authorization redirect page.', 'woocommerce-xero' ); ?></div>
+		<div class="wc-xero-status">
+			<img class="wc-xero-logo" src="<?php echo esc_url( WC_XERO_ABSURL . 'assets/xero_logo_blue.png' ); ?>" >
+			</br><span><b><?php esc_html_e( 'Connection status:', 'woocommerce-xero' ); ?></b>
+			<?php
+			if ( array_key_exists( 'correctRequest', $status ) ) {
+				?>
+				<span class="wc-xero-oauth-connection-ok"><b> <?php esc_html_e( '[OK]', 'woocommerce-xero' ); ?></b></span></span>
+				<div>
+					<?php
+					echo wp_kses(
+						sprintf(
+							// translators: %s: company name.
+							__( 'You are connected to %s organisation.', 'woocommerce-xero' ),
+							'<strong>' . esc_html( $status['connectedCompany'] ) . '</strong>'
+						),
+						array( 'strong' => array() )
+					);
+					?>
+				</div>
+				<?php
+			} elseif ( 'invalid_grant' === $status['errorMessage'] ) {
+				?>
+				<span class="wc-xero-oauth-connection-error"><b> <?php esc_html_e( '[ERROR]', 'woocommerce-xero' ); ?></b></span></span>
+				<div><?php esc_html_e( 'Cannot request the access token, please connect your application again!', 'woocommerce-xero' ); ?></div>
+				<div>
+					<?php
+					echo wp_kses(
+						__( 'For more information check the documentation page: <a href="https://woocommerce.com/document/xero/#setup-and-configuration">WooCommerce and Xero setup</a>', 'woocommerce-xero' ),
+						array( 'a' => array( 'href' => array() ) )
+					);
+					?>
+				</div>
+				<?php
+			} elseif ( 'invalid_client' === $status['errorMessage'] ) {
+				?>
+				<span class="wc-xero-oauth-connection-error"><b> <?php esc_html_e( '[ERROR]', 'woocommerce-xero' ); ?></b></span></span>
+				<div><?php esc_html_e( 'Authentication failed: It appears the client credentials are incorrect. Please verify them and try again.', 'woocommerce-xero' ); ?></div>
+				<div>
+					<?php
+					echo wp_kses(
+						__( 'For more information check the documentation page: <a href="https://woocommerce.com/document/xero/#setup-and-configuration">WooCommerce and Xero setup</a>', 'woocommerce-xero' ),
+						array( 'a' => array( 'href' => array() ) )
+					);
+					?>
+				</div>
+				<?php
+			} elseif ( 'no_connection' === $status['errorMessage'] ) {
+				?>
+				<div>
+					<?php esc_html_e( 'Application not authorized with Xero! Please click Sign in with Xero button.', 'woocommerce-xero' ); ?>
+				</div>
+				<?php
 			} else {
 				echo esc_html( $status['errorMessage'] ) . '</span>';
 			}
-		}
-		echo '</div">';
+			?>
+		</div>
+		<?php
 	}
 
 	/**
