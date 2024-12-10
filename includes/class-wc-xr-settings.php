@@ -288,7 +288,7 @@ class WC_XR_Settings {
 		add_action( 'admin_notices', array( $this, 'oauth20_migration_notice' ) );
 		add_action( 'admin_notices', array( $this, 'show_auth_keys_changed_notice' ) );
 
-		// Register menu items in the new WooCommerce navigation.
+		// Register menu items in the WooCommerce navigation. This feature was removed in WC 9.3.
 		add_action( 'admin_menu', array( $this, 'register_navigation_items' ) );
 
 		// If secret or key were changed we don't want to internally disconnect.
@@ -423,6 +423,14 @@ class WC_XR_Settings {
 	 * Register the navigation items in the WooCommerce navigation.
 	 */
 	public function register_navigation_items() {
+		/*
+		 * WooCommerce 9.3 removed the Navigation feature making this code obsolete.
+		 * Registering menu items will only work on stores running WooCommerce 9.2 or older.
+		 */
+		if ( ! defined( 'WC_VERSION' ) || version_compare( WC_VERSION, '9.3', '>=' ) ) {
+			return;
+		}
+
 		if (
 			! method_exists( Menu::class, 'add_setting_item' )
 		) {

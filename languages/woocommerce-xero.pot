@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WooCommerce Xero Integration package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Xero Integration 1.9.1\n"
+"Project-Id-Version: WooCommerce Xero Integration 1.9.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-xero\n"
-"POT-Creation-Date: 2024-11-04 13:26:36+00:00\n"
+"POT-Creation-Date: 2024-12-09 14:57:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -138,7 +138,7 @@ msgid "HTTPS for WordPress page"
 msgstr ""
 
 #: includes/class-wc-xr-privacy.php:22 includes/class-wc-xr-settings.php:403
-#: includes/class-wc-xr-settings.php:404 includes/class-wc-xr-settings.php:435
+#: includes/class-wc-xr-settings.php:404 includes/class-wc-xr-settings.php:443
 msgid "Xero"
 msgstr ""
 
@@ -417,64 +417,64 @@ msgstr ""
 msgid "Xero Settings"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:457 includes/class-wc-xr-settings.php:458
-#: includes/class-wc-xr-settings.php:510
+#: includes/class-wc-xr-settings.php:465 includes/class-wc-xr-settings.php:466
+#: includes/class-wc-xr-settings.php:518
 msgid "Xero OAuth"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:485
+#: includes/class-wc-xr-settings.php:493
 msgid "Something went wrong - token not received!"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:488
+#: includes/class-wc-xr-settings.php:496
 msgid "Something went wrong - previous state is different. CSRF prevention."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:521
+#: includes/class-wc-xr-settings.php:529
 msgid "Go back to Xero settings page."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:534
+#: includes/class-wc-xr-settings.php:542
 msgid "Xero for WooCommerce"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:538
+#: includes/class-wc-xr-settings.php:546
 msgid "Your settings have been saved."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:551
+#: includes/class-wc-xr-settings.php:559
 msgid "Missing required fields"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:557
+#: includes/class-wc-xr-settings.php:565
 msgid "There was an error saving your settings."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:574
+#: includes/class-wc-xr-settings.php:582
 msgid ""
 "Settings for your Xero account including security keys and default account "
 "numbers."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:577
+#: includes/class-wc-xr-settings.php:585
 #. translators: %1$s: opening anchor tag; %2$s: closing anchor tag
 msgid "Please ensure you're following all %1$srequirements%2$s prior to setup."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:580
+#: includes/class-wc-xr-settings.php:588
 #. translators: %1$s: opening strong tag; %2$s: closing strong tag
 msgid "%1$sAll%2$s text fields are required for the integration to work properly."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:618
+#: includes/class-wc-xr-settings.php:626
 msgid "Disconnect from Xero"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:626
+#: includes/class-wc-xr-settings.php:634
 msgid "Sign in with Xero"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:631
+#: includes/class-wc-xr-settings.php:639
 #. translators: %1$s: line break tag; %2$s: opening anchor tag; %3$s: closing
 #. anchor tag;
 msgid ""
@@ -483,75 +483,75 @@ msgid ""
 "%2$srequirements%3$s prior to setup."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:667
+#: includes/class-wc-xr-settings.php:675
 msgid ""
 "Please use the following url as your redirect url when creating a Xero "
 "application:"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:713
+#: includes/class-wc-xr-settings.php:721
 msgid "WooCommerce Xero authorization redirect page."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:716
+#: includes/class-wc-xr-settings.php:724
 msgid "Connection status:"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:720
+#: includes/class-wc-xr-settings.php:728
 msgid "[OK]"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:726
+#: includes/class-wc-xr-settings.php:734
 #. translators: %s: company name.
 msgid "You are connected to %s organisation."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:736 includes/class-wc-xr-settings.php:749
+#: includes/class-wc-xr-settings.php:744 includes/class-wc-xr-settings.php:757
 msgid "[ERROR]"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:737
+#: includes/class-wc-xr-settings.php:745
 msgid "Cannot request the access token, please connect your application again!"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:741 includes/class-wc-xr-settings.php:754
+#: includes/class-wc-xr-settings.php:749 includes/class-wc-xr-settings.php:762
 msgid ""
 "For more information check the documentation page: <a "
 "href=\"https://woocommerce.com/document/xero/#setup-and-configuration\""
 ">WooCommerce and Xero setup</a>"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:750
+#: includes/class-wc-xr-settings.php:758
 msgid ""
 "Authentication failed: It appears the client credentials are incorrect. "
 "Please verify them and try again."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:763
+#: includes/class-wc-xr-settings.php:771
 msgid "Application not authorized with Xero! Please click Sign in with Xero button."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:822
+#: includes/class-wc-xr-settings.php:830
 msgid "Xero authentication using keys is deprecated and no longer works."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:823
+#: includes/class-wc-xr-settings.php:831
 msgid ""
 "Please use new flow and the button available in Xero settings to authorize "
 "your application."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:825
+#: includes/class-wc-xr-settings.php:833
 msgid "Go to Xero settings page"
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:842
+#: includes/class-wc-xr-settings.php:850
 msgid ""
 "Unable to fetch the Branding Theme details. Please ensure your Xero "
 "connection is properly authenticated."
 msgstr ""
 
-#: includes/class-wc-xr-settings.php:862
+#: includes/class-wc-xr-settings.php:870
 msgid ""
 "Xero account was disconnected because authentication keys were changed. "
 "Please connect again."
