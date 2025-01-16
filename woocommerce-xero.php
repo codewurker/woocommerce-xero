@@ -6,7 +6,7 @@
  * Description: Integrates <a href="https://woocommerce.com/" target="_blank" >WooCommerce</a> with the <a href="http://www.xero.com" target="_blank">Xero</a> accounting software.
  * Author: WooCommerce
  * Author URI: https://woocommerce.com/
- * Version: 1.9.2
+ * Version: 1.9.3
  * Text Domain: woocommerce-xero
  * Domain Path: /languages/
  * Requires at least: 6.5
@@ -43,7 +43,7 @@ if ( ! defined( 'WC_XERO_ABSURL' ) ) {
 	define( 'WC_XERO_ABSURL', plugin_dir_url( __FILE__ ) . '/' );
 }
 
-define( 'WC_XERO_VERSION', '1.9.2' ); // WRCS: DEFINED_VERSION.
+define( 'WC_XERO_VERSION', '1.9.3' ); // WRCS: DEFINED_VERSION.
 
 // ActionScheduler group.
 define( 'WC_XERO_AS_GROUP', 'wc_xero' );
@@ -80,8 +80,8 @@ final class WC_Xero {
 		$wc_xr_encrypt_legacy_tokens_migration = new WC_XR_Encrypt_Legacy_Tokens_Migration();
 		$wc_xr_encrypt_legacy_tokens_migration->setup_hook();
 
-		// Load textdomain.
-		load_plugin_textdomain( 'woocommerce-xero', false, dirname( plugin_basename( self::get_plugin_file() ) ) . '/languages' );
+		// Load textdomain on init hook.
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 
 		// Setup Settings.
 		$settings = new WC_XR_Settings();
@@ -156,6 +156,13 @@ final class WC_Xero {
 		);
 
 		return array_merge( $plugin_links, $links );
+	}
+
+	/**
+	 * Load plugin textdomain.
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'woocommerce-xero', false, dirname( plugin_basename( self::get_plugin_file() ) ) . '/languages' );
 	}
 
 }

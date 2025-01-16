@@ -1,5 +1,8 @@
 *** Xero Integration ***
 
+2025-01-13 - version 1.9.3
+* Fix - Resolved PHP notice caused by loading localization code too early on WordPress 6.7.
+
 2024-12-09 - version 1.9.2
 * Fix - Prevent deprecation notices by conditionally loading Navigation feature only for stores running WC <= 9.2.
 * Dev - Bump WooCommerce "tested up to" version 9.5.
