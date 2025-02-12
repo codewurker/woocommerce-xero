@@ -92,11 +92,17 @@ class WC_XR_OAuth20_Storage_Class {
 		// Decrypt token only if value is non-empty. Default value of token is NULL.
 		if ( $xero_oauth_options['token'] ) {
 			$xero_oauth_options['token'] = $wc_xr_data_encryption->decrypt( $xero_oauth_options['token'] );
+		} else {
+			$logger = new WC_XR_Oauth20_Logger();
+			$logger->write( 'The token is empty' );
 		}
 
 		// Decrypt refresh_token only if value is non-empty. Default value of refresh_token is NULL.
 		if ( $xero_oauth_options['refresh_token'] ) {
 			$xero_oauth_options['refresh_token'] = $wc_xr_data_encryption->decrypt( $xero_oauth_options['refresh_token'] );
+		} else {
+			$logger = new WC_XR_Oauth20_Logger();
+			$logger->write( 'The refresh_token is empty' );
 		}
 
 		return $xero_oauth_options;

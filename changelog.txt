@@ -1,5 +1,11 @@
 *** Xero Integration ***
 
+2025-02-10 - version 1.9.4
+* Fix - Improve logging around `refresh_access_token` to avoid invalid request connection status errors.
+* Dev - Bump WooCommerce "tested up to" version 9.7.
+* Dev - Bump WooCommerce minimum supported version to 9.5.
+* Dev - Bump WordPress minimum supported version to 6.6.
+
 2025-01-13 - version 1.9.3
 * Fix - Resolved PHP notice caused by loading localization code too early on WordPress 6.7.
 

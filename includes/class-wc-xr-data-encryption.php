@@ -128,6 +128,11 @@ class WC_XR_Data_Encryption {
 			$key   = sodium_crypto_generichash( $this->key, '', SODIUM_CRYPTO_SECRETBOX_KEYBYTES );
 			$nonce = random_bytes( SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
 		} catch ( Exception $e ) {
+			$logger = new WC_XR_Oauth20_Logger();
+			$logger->write( 'Error generating key or nonce during encryption.' );
+			$logger->write( 'Exception: ' . $e->getMessage() );
+			$logger->write( 'Trace: ' . $e->getTraceAsString() );
+
 			// Return the original value if fail to generate nonce and key.
 			return $value;
 		}
@@ -136,6 +141,11 @@ class WC_XR_Data_Encryption {
 			$encrypted = sodium_crypto_secretbox( $value . $this->salt, $nonce, $key );
 			return sodium_bin2base64( $nonce . $encrypted, SODIUM_BASE64_VARIANT_ORIGINAL );
 		} catch ( Exception $e ) {
+			$logger = new WC_XR_Oauth20_Logger();
+			$logger->write( 'Error encrypting the unencrypted string during encryption.' );
+			$logger->write( 'Exception: ' . $e->getMessage() );
+			$logger->write( 'Trace: ' . $e->getTraceAsString() );
+
 			// Return false if encryption fails.
 			return false;
 		}
@@ -159,6 +169,11 @@ class WC_XR_Data_Encryption {
 			$nonce            = mb_substr( $decoded, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, '8bit' );
 			$encrypted_result = mb_substr( $decoded, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit' );
 		} catch ( Exception $e ) {
+			$logger = new WC_XR_Oauth20_Logger();
+			$logger->write( 'Error decrypting the encrypted string during decoding.' );
+			$logger->write( 'Exception: ' . $e->getMessage() );
+			$logger->write( 'Trace: ' . $e->getTraceAsString() );
+
 			// Return the original value if fail to get decoded value or nonce and key.
 			return $encrypted;
 		}
@@ -166,10 +181,18 @@ class WC_XR_Data_Encryption {
 		try {
 			$value = sodium_crypto_secretbox_open( $encrypted_result, $nonce, $key );
 			if ( ! $value || substr( $value, - strlen( $this->salt ) ) !== $this->salt ) {
+				$logger = new WC_XR_Oauth20_Logger();
+				$logger->write( 'Decryption failed or the decrypted string is invalid. The string does not end with the expected salt.' );
+
 				return false;
 			}
 			return substr( $value, 0, - strlen( $this->salt ) );
 		} catch ( Exception $e ) {
+			$logger = new WC_XR_Oauth20_Logger();
+			$logger->write( 'Error decrypting the encrypted string during decryption.' );
+			$logger->write( 'Exception: ' . $e->getMessage() );
+			$logger->write( 'Trace: ' . $e->getTraceAsString() );
+
 			return false;
 		}
 	}
