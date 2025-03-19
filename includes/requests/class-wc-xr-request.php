@@ -305,7 +305,7 @@ abstract class WC_XR_Request {
 			$oauth_advise = ( ( isset( $oauth_error['oauth_problem_advice'] ) ) ? $oauth_error['oauth_problem_advice'] : '' );
 
 			// Throw new exception.
-			throw new Exception( sprintf( 'Request failed due OAuth error: %s | %s', $oauth_error['oauth_problem'], $oauth_advise ) );
+			throw new Exception( sprintf( 'Request failed due OAuth error: %s | %s', $oauth_error['oauth_problem'], $oauth_advise ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 
 		// Check for 401 (Unauthorized), 403 (Forbidden) and 429 (too many requests) error.
@@ -315,7 +315,7 @@ abstract class WC_XR_Request {
 
 			// Throw new exception.
 			// translators: %1$d - response code, %2$s - response message.
-			throw new Exception( sprintf( __( 'Xero request failed due to error: %1$d (%2$s)', 'woocommerce-xero' ), absint( $response_code ), esc_attr( $response_message ) ) );
+			throw new Exception( sprintf( __( 'Xero request failed due to error: %1$d (%2$s)', 'woocommerce-xero' ), absint( $response_code ), esc_attr( $response_message ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 
 		return true;

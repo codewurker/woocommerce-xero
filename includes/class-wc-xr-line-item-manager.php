@@ -136,7 +136,7 @@ class WC_XR_Line_Item_Manager {
 	 * @return string
 	 */
 	public static function detexturize( $string ) {
-		$string = strip_tags( $string );
+		$string = wp_strip_all_tags( $string );
 
 		$replacements = array(
 			'&#8211;' => '-',

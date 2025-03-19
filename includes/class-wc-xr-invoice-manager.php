@@ -175,7 +175,7 @@ class WC_XR_Invoice_Manager {
 
 				$logger->write( 'INVOICE HAS NOT CHANGED, NOT SENDING ORDER WITH ID ' . $order_id );
 
-				$order->add_order_note( __( 'Skipping sending Xero Invoice update since there are no changes. Invoice ID: ' . $xero_invoice_id, 'woocommerce-xero' ) );
+				$order->add_order_note( __( 'Skipping sending Xero Invoice update since there are no changes. Invoice ID: ' . $xero_invoice_id, 'woocommerce-xero' ) ); // phpcs:ignore WordPress.WP.I18n
 
 				return false;
 			}

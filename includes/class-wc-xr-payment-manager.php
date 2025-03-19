@@ -184,6 +184,7 @@ class WC_XR_Payment_Manager {
 				$error_num = (string) $xml_response->ErrorNumber;
 				$error_msg = (string) $xml_response->Elements->DataContractBase->ValidationErrors->ValidationError->Message;
 				$order->add_order_note( sprintf(
+					// translators: Error number and message from Xero.
 					__( 'ERROR creating Xero payment. ErrorNumber: %1$s | Error Message: %2$s', 'woocommerce-xero' ),
 					$error_num,
 					$error_msg

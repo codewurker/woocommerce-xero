@@ -235,7 +235,7 @@ class WC_XR_Privacy extends WC_Abstract_Privacy {
 		 */
 		if ( $subscription->has_status( apply_filters( 'wc_xero_privacy_eraser_subs_statuses', array( 'on-hold', 'active' ) ) ) ) {
 			/* translators: %d: Order id  */
-			return array( false, true, array( sprintf( __( 'Order ID %d contains an active Subscription' ), $order->get_id() ) ) );
+			return array( false, true, array( sprintf( __( 'Order ID %d contains an active Subscription', 'woocommerce-xero' ), $order->get_id() ) ) );
 		}
 
 		$renewal_orders = WC_Subscriptions_Renewal_Order::get_renewal_orders( $order->get_id() );

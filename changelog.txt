@@ -1,5 +1,11 @@
 *** Xero Integration ***
 
+2025-03-17 - version 1.9.5
+* Dev - Bump WooCommerce "tested up to" version 9.8.
+* Dev - Bump WooCommerce minimum supported version to 9.6.
+* Dev - Add the WordPress Plugin Check GitHub Action and fix all errors it found.
+* Dev - Use the `@woocommerce/e2e-utils-playwright` NPM package for E2E tests.
+
 2025-02-10 - version 1.9.4
 * Fix - Improve logging around `refresh_access_token` to avoid invalid request connection status errors.
 * Dev - Bump WooCommerce "tested up to" version 9.7.

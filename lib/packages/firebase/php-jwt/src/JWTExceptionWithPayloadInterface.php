@@ -2,7 +2,7 @@
 /**
  * @license BSD-3-Clause
  *
- * Modified by woocommerce on 10-February-2025 using Strauss.
+ * Modified by woocommerce on 17-March-2025 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 namespace Automattic\WooCommerce\Xero\Vendor\Firebase\JWT;

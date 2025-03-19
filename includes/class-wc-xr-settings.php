@@ -351,7 +351,7 @@ class WC_XR_Settings {
 			);
 
 			// Register setting
-			register_setting( 'woocommerce_xero', self::OPTION_PREFIX . $key );
+			register_setting( 'woocommerce_xero', self::OPTION_PREFIX . $key ); // phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingMissing
 
 		}
 
@@ -632,7 +632,7 @@ class WC_XR_Settings {
 			echo '<div class="wc-xero-oauth-data-complete">';
 			// Redirect the user to the authorization URL.
 			echo '<span data-xero-sso data-href="' . esc_url( $authorization_url ) . '" data-label="' . esc_html__( 'Sign in with Xero', 'woocommerce-xero' ) . '"></span>';
-			echo '<script src="https://edge.xero.com/platform/sso/xero-sso.js" async defer></script>';
+			echo '<script src="https://edge.xero.com/platform/sso/xero-sso.js" async defer></script>'; // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
 			echo '</div>';
 		} else {
 			/* translators: %1$s: line break tag; %2$s: opening anchor tag; %3$s: closing anchor tag; */

@@ -222,13 +222,13 @@ class WC_XR_OAuth20 {
 	 * Prevent cloning.
 	 */
 	public function __clone() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning instances of this class is forbidden.', 'woocommerce' ) );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning instances of this class is forbidden.', 'woocommerce-xero' ) );
 	}
 
 	/**
 	 * Prevent unserialize.
 	 */
 	public function __wakeup() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'woocommerce' ) );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'woocommerce-xero' ) );
 	}
 }

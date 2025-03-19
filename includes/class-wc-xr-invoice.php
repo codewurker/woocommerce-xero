@@ -424,7 +424,7 @@ class WC_XR_Invoice {
 		$path = '/post.php?post=' . esc_attr( intval( $order_id ) ) . '&amp;action=edit';
 		$url =  admin_url( $path );
 		// Check for port number (port numbers in URLs are not allowed by Xero)
-		$port = parse_url( $url, PHP_URL_PORT );
+		$port = wp_parse_url( $url, PHP_URL_PORT );
 		// Only add the Url to the XML if a port number is NOT present
 		if ( empty( $port ) ) {
 			$xml .= '<Url>' . esc_url( $url ) . '</Url>';
